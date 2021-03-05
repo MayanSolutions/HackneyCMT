@@ -17,7 +17,7 @@ class Review extends Model
         return url('/reviews/' .$this->id);
     }
 
-    public function publicpath()
+    public function publicPath()
     {
         return url('/surveys/'.$this->id.'-'. Str::slug($this->title));
     }
