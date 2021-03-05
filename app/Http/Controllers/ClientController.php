@@ -110,13 +110,11 @@ class ClientController extends Controller
     {
         abort_if(Gate::denies('client_access'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
 
-        $clientDetails = clients::where('id', $id)->first();
+        $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
 
         $emptyProfiles = clients::doesntHave('EstateDetails')->where('id',$id)->get();
 
         $liaisonDetails = User::where('id', $clientDetails->user_id)->get();
-
-        $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
 
         return view('clients.show', compact('clientDetails','liaisonDetails', 'emptyProfiles', 'clientDetails'));
     }
