@@ -52,9 +52,6 @@
                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Review Version
                                             </th>
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Public Path
-                                            </th>
                                            <th scope="col" class="relative px-6 py-3">
                                               <span class="sr-only">Edit</span>
                                            </th>
@@ -80,12 +77,6 @@
                                                 {{  $review->version  }}
                                             </div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-500">
-                                                    {{  $review->publicPath()  }}
-                                                </div>
-                                                </td>
-
                                          <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-500">
                                                 <a href="{{ $review->publicpath() }}" class="inline-block rounded-full
