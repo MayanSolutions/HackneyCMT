@@ -12,7 +12,7 @@
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                     <div class="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-12 lg:px-8 lg:py-8">
-                        <div class="grid grid-cols-2 row-gap-8 md:grid-cols-4">
+                        <div class="grid grid-cols-2 row-gap-8 md:grid-cols-5">
                           <div class="text-center">
                             <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ $clientDetails->EstateDetails->tenants }}</h6>
                             <p class="font-bold">Tenants</p>
