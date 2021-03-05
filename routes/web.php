@@ -8,6 +8,7 @@ Route::get('/', function () {
 });
 
 Route::get('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'show']);
+Route::post('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'store']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -35,9 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/reviews/{review}/questions/create', [\App\Http\Controllers\QuestionController::class, 'create']);
     Route::post('/reviews/{review}/questions', [\App\Http\Controllers\QuestionController::class, 'store']);
     Route::delete('/reviews/{review}/questions/{question}', [\App\Http\Controllers\QuestionController::class, 'destroy']);
-    //
-    Route::get('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'show']);
-    Route::post('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'store']);
+
 });
 
 
