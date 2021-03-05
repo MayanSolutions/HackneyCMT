@@ -41,8 +41,10 @@ class ClientFunction extends Controller
         ])
         ->paginate(4);
 
+        $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
 
-        return view('clientfunctions.show', compact('clients', 'clientFunctions'));
+
+        return view('clientfunctions.show', compact('clients', 'clientFunctions', 'clientDetails'));
     }
 
     public function edit($id)

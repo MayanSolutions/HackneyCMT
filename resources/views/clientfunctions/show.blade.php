@@ -14,15 +14,19 @@
                     <div class="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-12 lg:px-8 lg:py-8">
                         <div class="grid grid-cols-2 row-gap-8 md:grid-cols-4">
                           <div class="text-center">
-                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">1010</h6>
+                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ $clientDetails->EstateDetails->tenants }}</h6>
                             <p class="font-bold">Tenants</p>
                           </div>
                           <div class="text-center">
-                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">190</h6>
+                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ $clientDetails->EstateDetails->leaseholders }}</h6>
                             <p class="font-bold">Leaseholders</p>
                           </div>
                           <div class="text-center">
-                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">1200</h6>
+                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ $clientDetails->EstateDetails->freeholders }}</h6>
+                            <p class="font-bold">Freeholders</p>
+                          </div>
+                          <div class="text-center">
+                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ $clientDetails->EstateDetails->no_of_units }}</h6>
                             <p class="font-bold">Properties</p>
                           </div>
                           <div class="text-center">
