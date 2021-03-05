@@ -17,7 +17,7 @@
                                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                       <div class="shadow overflow-hidden border-b border-gray-200 ">
                                        <h2 class="mb-2 mt-4 ml-6 font-extrabold float-left tracking-tight text-gray-700">
-                                           Digital Annual Review Surveys
+                                        <x-heroicon-s-tag class="h-5 w-5 text-green-700" /> Currently Under Development
                                          </h2>
                                     </div>
                                 </div>
