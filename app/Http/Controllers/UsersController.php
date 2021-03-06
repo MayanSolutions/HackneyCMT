@@ -6,6 +6,8 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\clients;
+use App\Models\MatrixFunction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,7 +44,6 @@ class UsersController extends Controller
 
         $roles = Role::pluck('title', 'id');
 
-
         return view('users.create', compact('roles'));
     }
 
@@ -57,12 +58,31 @@ class UsersController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function show(User $user)
+    public function show(User $user, Request $request)
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $useractivities = Activity::where('subject_id', '=', ($user->id))->orderBy('id', 'DESC')->paginate(3);
 
-        return view('users.show', compact('user', 'useractivities'));
+        $useractivities = Activity::where([
+            ['causer_id', '=', $user->id],
+            ['log_name', '!=', NULL],
+            [function ($query) use ($request) {
+                if (($activities = $request->activity)) {
+                    $query->orWhere('log_name', 'LIKE', '%' . $activities . '%')
+                    ->orWhere('description', 'LIKE', '%' . $activities . '%')
+                    ->orWhere('subject_type', 'LIKE', '%' . $activities . '%')
+                    ->orWhere('causer_type', 'LIKE', '%' . $activities . '%')
+                    ->orWhere('causer_id', 'LIKE', '%' . $activities . '%')
+                    ->orWhere('properties', 'LIKE', '%' . $activities . '%')
+                    ->get();
+                }
+            }]
+            ])
+            ->orderBy('id', 'DESC')
+            ->paginate(5);
+
+        $clientDetails = clients::with('EstateDetails')->where('user_id', $user->id)->get();
+
+        return view('users.show', compact('user', 'useractivities', 'clientDetails', ));
     }
 
     public function edit(User $user)

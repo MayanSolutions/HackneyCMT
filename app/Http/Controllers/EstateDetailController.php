@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\clients;
 use App\Models\User;
 use App\Models\EstateDetail;
+use App\Models\MatrixFunction;
 use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Gate;
@@ -124,9 +125,18 @@ class EstateDetailController extends Controller
 
         $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
 
+        // $allFunctions = MatrixFunction::count();
+        // $clientFunctions = DB::table('matrix_functions')
+        // ->join('clients_matrix_function', 'clients_matrix_function.function_id', '=', 'id')
+        // ->select('clients_matrix_function.function_id','clients_matrix_function.function_id')
+        // ->where('client_id', $clientDetails->id)
+        // ->count();
+        // $control = $clientFunctions / $allFunctions * 100;
+
+
         $liaisonDetails = User::where('id', $clientDetails->user_id)->get();
 
-        return view('estatedetails.show', compact('clientDetails','liaisonDetails'));
+        return view('estatedetails.show', compact('clientDetails','liaisonDetails',));
     }
 
     /**

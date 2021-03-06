@@ -28,7 +28,7 @@
                         Responsibilities List
                         </h3>
                         <p class="mt-1 max-w-2xl text-sm text-white">
-
+                        Areas of operation, under responsibility of the TMO organisation
                         </p>
                     </div>
                     @foreach( $functions as $category)

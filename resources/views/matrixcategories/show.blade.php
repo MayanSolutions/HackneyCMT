@@ -84,7 +84,6 @@
                         <div class="border-t border-gray-200">
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <form action="{{ route('matrixcategories.show', $category->id) }}" method="GET" role="search">
-                                    @csrf
                                     <div class="pt-2 relative mx-auto float-right mr-3 mb-2 text-gray-600">
                                       <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" name="function" placeholder="Search Function">
                                       <button type="submit" id="function" class="absolute right-0 top-0 mt-5 mr-4">
@@ -148,8 +147,7 @@
                                         <form class="inline-block" action="{{ route('matrixfunctions.destroy', $function->id) }}" method="POST">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button type="submit" class="inline-block rounded-full
-                                        text-xs font-bold mr-1 opacity-90 hover:opacity-100 delete-function"><x-heroicon-s-trash class="h-5 w-5 text-red-700" /></button></a>
+                                        <a type="submit" class="bg-white hover:bg-red-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow delete-confirm">Delete</a>
                                      </form>
                                        @endcan
                                         </td>

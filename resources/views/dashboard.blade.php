@@ -18,7 +18,8 @@
                                       <div class="shadow overflow-hidden border-b border-gray-200 ">
                                        <h2 class="mb-2 mt-4 ml-6 font-extrabold float-left tracking-tight text-gray-700">
                                         <x-heroicon-s-tag class="h-5 w-5 text-green-700" /> Currently Under Development
-                                         </h2>
+                                        </h2>
+                                        <br>
                                     </div>
                                 </div>
                             </div>

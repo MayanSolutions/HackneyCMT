@@ -109,20 +109,16 @@
                                                 <div class="text-sm text-gray-500 ">{{ $client->client_address }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="{{ route('clientfunctions.show', $client->id) }}" class="inline-block rounded-full
-                                                    text-xs font-bold mr-4 opacity-90 hover:opacity-100"><x-heroicon-s-collection class="h-5 w-5 text-orange-500" /></a>
-                                                <a href="{{ route('clients.show', $client->id) }}" class="inline-block rounded-full
-                                                    text-xs font-bold mr-4 opacity-90 hover:opacity-100"><x-heroicon-s-eye class="h-5 w-5 text-green-700" /></a>
+                                                <a href="{{ route('clientfunctions.show', $client->id) }}" class="inline-flex bg-white hover:bg-blue-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Functions</a>
+                                                <a href="{{ route('clients.show', $client->id) }}" class="inline-flex bg-white hover:bg-purple-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Show</a>
                                                     @can('client_edit')
-                                                <a href="{{ route('clients.edit', $client->id) }}" class="inline-block rounded-full mr-4"><x-heroicon-s-pencil-alt class="h-5 w-5 text-purple-700" /></a>
+                                                <a href="{{ route('clients.edit', $client->id) }}" class="inline-flex bg-white hover:bg-orange-500 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Modify</a>
                                                     @endcan
                                                     @can('client_delete')
                                                     <form class="inline-block" action="{{ route('clients.destroy', $client->id) }}" method="POST">
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                    <button type="submit" class="inline-block rounded-full
-                                                    text-xs font-bold mr-1
-                                                    opacity-90 hover:opacity-100 delete-confirm"><x-heroicon-s-trash class="h-5 w-5 text-red-700" /></button></a>
+                                                    <a type="submit" class="bg-white hover:bg-red-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow delete-confirm">Delete</a>
                                                 </form>
                                                 @endcan
                                             </td>

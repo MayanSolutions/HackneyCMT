@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class EstateDetail extends Model
 {
     use HasFactory;
+    use LogsActivity;
 
     protected $fillable = [
         'client_id',
@@ -22,7 +24,7 @@ class EstateDetail extends Model
 
     protected static $recordEvents = ['created', 'updated', 'deleted'];
 
-    protected static $logName = 'Clients';
+    protected static $logName = 'Estates';
 
     public function getDescriptionForEvent(string $eventName): string
     {

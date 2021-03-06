@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class clients extends Model
 {
     use HasFactory;
+    use LogsActivity;
 
     protected $fillable = [
         'client_organisation',

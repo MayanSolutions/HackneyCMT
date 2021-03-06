@@ -84,7 +84,7 @@
                                         Description
                                       </th>
                                       <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        @can('can_function_assign')<a href="{{ route('clientfunctions.edit', $clients->id) }}" class="inline-block rounded-full mr-4"><x-heroicon-s-pencil-alt class="h-5 w-5 text-purple-700" /></a>@endcan
+                                        @can('can_function_assign')<a href="{{ route('clientfunctions.edit', $clients->id) }}" class="inline-flex bg-white hover:bg-orange-500 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Modify</a>@endcan
                                       </th>
                                    </tr>
                                 </thead>
@@ -163,6 +163,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             {!! $clientFunctions->links() !!}
         </div>
 </x-app-layout>
