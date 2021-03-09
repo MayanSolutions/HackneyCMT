@@ -42,9 +42,22 @@ class ClientFunction extends Controller
         ->paginate(4);
 
         $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
+        $functions = MatrixFunction::all();
+        $clientFunctions = DB::table('matrix_functions')
+            ->join('clients_matrix_function', 'clients_matrix_function.function_id', '=', 'id')
+            ->select('clients_matrix_function.function_id','clients_matrix_function.function_id')
+            ->where('client_id', $clientDetails->id)
+            ->get();
 
+        if ($functions->isEmpty()){
+            $control = 0;
+        }elseif($clientFunctions->isEmpty()){
+            $control = 0;
+        }else{
+            $control = $functions->count() / $clientFunctions->count() *100;
+        }
 
-        return view('clientfunctions.show', compact('clients', 'clientFunctions', 'clientDetails'));
+        return view('clientfunctions.show', compact('clients', 'clientFunctions', 'clientDetails', 'control'));
     }
 
     public function edit($id)

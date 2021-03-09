@@ -10,6 +10,7 @@
                 <a href="{{ route('clients.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">Organisation List</a>
              </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
+                @if(!empty($clientDetails->EstateDetails))
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                     <div class="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-12 lg:px-8 lg:py-8">
                         <div class="grid grid-cols-2 row-gap-8 md:grid-cols-5">
@@ -30,10 +31,41 @@
                             <p class="font-bold">Properties</p>
                           </div>
                           <div class="text-center">
-                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">86%</h6>
+                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ $control }}</h6>
                             <p class="font-bold">Functions</p>
                           </div>
                         </div>
+                        @else
+                        <div class="shadow overflow-hidden sm:rounded-md">
+                            <div class="shadow overflow-hidden sm:rounded-md">
+                                <div class="bg-red-500 px-4 py-5 sm:px-6">
+                                    <h3 class="text-lg leading-6 font-medium text-white">
+                                      Estate Profile
+                                    </h3>
+                                    <p class="mt-1 max-w-2xl text-sm text-white">
+                                        This relates to property and resident makeup of the estate
+                                    </p>
+                                </div>
+                                <div class="border-t border-gray-200">
+                                    <div class="shadow overflow-hidden border-b border-gray-200">
+                                        <section class="w-full bg-gradient-to-b from-gray-100 to-white">
+                                            <div class="w-full px-4 py-10 mx-auto text-left md:text-center md:w-3/4 lg:w-2/4">
+                                              <h2 class="mb-6 font-extrabold tracking-tight md:text-1xl md:mb-6 md:leading-tight">
+                                                  This TMO does not have an estate makeup. Please click below to create an estate profile. Please do not ignore this warning !
+                                                </h2>
+                                              <div class="mb-0 space-x-0 md:space-x-2">
+                                                <a href="{{ route('estatedetails.create') }}" class="inline-block rounded-full text-white
+                                                    bg-gray-600 hover:bg-purple-600 duration-300
+                                                    text-xs font-bold
+                                                    mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1
+                                                    opacity-90 hover:opacity-100">Create Estate</a>
+                                              </div>
+                                            </div>
+                                          </section>
+                                    </div>
+                                </div>
+                            </div>
+                          @endif
                     </div>
                 </div>
                 <br>
@@ -119,6 +151,12 @@
                                    <!-- More items... -->
                                 </tbody>
                              </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                {!! $clientFunctions->links() !!}
                              @else
                              <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
@@ -158,12 +196,10 @@
                                   @endcan
                                 </div>
                               </section>
-                            @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <br>
-            {!! $clientFunctions->links() !!}
+            @endif
         </div>
 </x-app-layout>

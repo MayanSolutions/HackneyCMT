@@ -58,6 +58,9 @@ class User extends Authenticatable
         'department',
         'organisation',
         'password',
+        'last_login',
+        'last_login_ip',
+        'active',
     ];
 
     /**

@@ -32,6 +32,9 @@
                               Organisation
                             </th>
                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Last Login
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Responsibility
                             </th>
                           </tr>
@@ -66,6 +69,10 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 {{ $user->organisation }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">{{ \Carbon\Carbon::parse($user->last_login)->format('j F, Y h:i:s A') }}</div>
+                                <div class="text-xs text-gray-500">IP Address{{ $user->last_login_ip }}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 @if($clientDetails->count() > 1)
@@ -144,6 +151,7 @@
                                     </div>
                                  </div>
                               </td>
+                              @if(!empty($clientDetails->EstateDetails))
                               <td class="px-6 py-4 whitespace-nowrap">
                                  <div class="flex items-center">
                                     <div class="">
@@ -165,7 +173,29 @@
                                     {{ $client->EstateDetails->freeholders }} Freeholders
                                 </div>
                               </td>
+                                @else
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                       <div class="">
+                                          <div class="text-sm font-medium text-gray-900">
+                                           No Estate has been registered
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </td>
 
+                                 <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-xs text-gray-500 ">
+                                       0 Tenants
+                                   </div>
+                                   <div class="text-xs text-gray-500 ">
+                                       0 Leaseholders
+                                   </div>
+                                   <div class="text-xs text-gray-500 ">
+                                       0 Freeholders
+                                   </div>
+                                 </td>
+                                 @endif
 
                               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                  <a href="{{ route('clients.show', $client->id) }}" class="inline-flex bg-white hover:bg-purple-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Show</a>
