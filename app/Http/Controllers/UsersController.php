@@ -7,13 +7,10 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\clients;
-use App\Models\MatrixFunction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
-use Spatie\Activitylog\Models\Activity;
-use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
+
 
 class UsersController extends Controller
 {
@@ -62,27 +59,9 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $useractivities = Activity::where([
-            ['causer_id', '=', $user->id],
-            ['log_name', '!=', NULL],
-            [function ($query) use ($request) {
-                if (($activities = $request->activity)) {
-                    $query->orWhere('log_name', 'LIKE', '%' . $activities . '%')
-                    ->orWhere('description', 'LIKE', '%' . $activities . '%')
-                    ->orWhere('subject_type', 'LIKE', '%' . $activities . '%')
-                    ->orWhere('causer_type', 'LIKE', '%' . $activities . '%')
-                    ->orWhere('causer_id', 'LIKE', '%' . $activities . '%')
-                    ->orWhere('properties', 'LIKE', '%' . $activities . '%')
-                    ->get();
-                }
-            }]
-            ])
-            ->orderBy('id', 'DESC')
-            ->paginate(5);
-
         $clientDetails = clients::with('EstateDetails')->where('user_id', $user->id)->get();
 
-        return view('users.show', compact('user', 'useractivities', 'clientDetails', ));
+        return view('users.show', compact('user', 'clientDetails', ));
     }
 
     public function edit(User $user)
@@ -109,7 +88,6 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         abort_if(Gate::denies('user_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
 
         $user->delete();
 
