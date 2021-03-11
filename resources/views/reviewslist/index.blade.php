@@ -6,7 +6,7 @@
     </x-slot>
     <div>
 
-       <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
+       <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
            @can('can_create_matrix_cat')
             <div class="block mb-8">
                 <a href="reviews\create" class="bg-green-400 hover:bg-green-600 text-white font-bold text-xs py-2 px-4 rounded">Create Digital Review</a>
@@ -80,7 +80,7 @@
                                          <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-500">
                                                 <a href="{{ $review->publicpath() }}"  class="inline-flex bg-white hover:bg-lilac-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Live Submission</a>
-                                                
+
                                                 <a href="{{ $review->path() }}"  class="inline-flex bg-white hover:bg-purple-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Show</a>
                                             </div>
                                          </td>

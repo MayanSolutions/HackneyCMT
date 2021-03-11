@@ -6,16 +6,16 @@
     </x-slot>
 
 
-        <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <form method="post" action="{{ route('roles.store') }}">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="bg-purple-500 px-4 py-5 sm:px-6">
-                            <h3 class="text-lg leading-6 font-medium text-white">
+                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                             System Profile
                             </h3>
-                            <p class="mt-1 max-w-2xl text-sm text-white">
+                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                             These profile grant access to system areas by assigning permissions
                             </p>
                         </div>
@@ -29,22 +29,23 @@
                     </div>
                     <br>
 
-                    <div class="shadow overflow-hidden sm:rounded-md">
+                    <div class="shadow overflow-hidden sm:rounded-md bg-white">
                         <div class="bg-purple-500 px-4 py-5 sm:px-6">
-                            <h3 class="text-lg leading-6 font-medium text-white">
+                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                             Permission's List
                             </h3>
-                            <p class="mt-1 max-w-2xl text-sm text-white">
+                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                             The checked permissions will be assigned to the creared profile
                             </p>
                         </div>
                             <div class="max-w-6xl mx-auto py-6 sm:px-6 lg:px-6">
-                                <label for="title" class="block font-medium text-sm text-gray-700">System Permissions</label>
+                                <label for="title" class="block font-medium text-sm text-gray-700 mb-2 ">System Permissions</label>
                                 <div class="block mb-8">
                                     <div class="flex flex-row flex-wrap">
                                         @foreach($permission as $value)
-                                        <label class="inline-flex text-sm items-center mt-1 p-2">
-                                          <input type="checkbox" name="permission[]" id="permission" value="{{ $value->id }}" class="form-checkbox h-5 w-5 text-black" ><span class="ml-2 text-black">{{ $value->description }}</span>
+                                        <label class="inline-flex bg-white hover:bg-teal-400 text-sm mt-2 mb-2 mr-2 font-semibold py-1 px-2 border border-gray-300 rounded shadow">
+                                          <input type="checkbox" name="permission[]" id="permission" value="{{ $value->id }}" class="form-checkbox h-5 w-5 text-black" >
+                                          <span class="ml-2 text-gray-800 hover:text-white">{{ $value->description }}</span>
                                         </label>
                                         @endforeach
                                     </div>

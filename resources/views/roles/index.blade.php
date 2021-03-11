@@ -6,7 +6,7 @@
     </x-slot>
     <div>
 
-       <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
+       <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
           <div class="block mb-8">
               @can('user_access')
             <a href="{{ route('users.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">Accounts List</a>
@@ -28,7 +28,6 @@
                                     Profiles and Permissions
                                   </h2>
                                   <form action="{{ route('roles.index') }}" method="GET" role="search">
-                                    @csrf
                                     <div class="pt-2 relative mx-auto float-right mr-3 mb-2 text-gray-600">
                                       <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" name="title" placeholder="Search by profile">
                                       <button type="submit" id="title" class="absolute right-0 top-0 mt-5 mr-4">

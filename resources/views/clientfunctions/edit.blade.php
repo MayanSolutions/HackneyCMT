@@ -5,43 +5,43 @@
         </h2>
     </x-slot>
 
-    <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <div class="mt-5 md:mt-0 md:col-span-2">
             <form method="post" action="{{ route('clientfunctions.update', $client->id) }}">
                 @csrf
                 @method('put')
                 <div class="shadow overflow-hidden sm:rounded-md">
-                    <div class="bg-orange-500 px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-white">
-                        Responsibilities for - {{ $client->client_organisation }}
+                    <div class="bg-teal-500 px-4 py-5 sm:px-6">
+                        <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
+                        {{ $client->client_organisation }}
                         <input type="hidden" name="client" value="{{ $client->id }}" readonly/>
                         </h3>
-                        <p class="mt-1 max-w-2xl text-sm text-white">
+                        <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                         Assign the correct responsibilities to the TMO organisation. If you're unsure, please contact the TMO Services Team
                         </p>
                     </div>
                 </div>
                 <br>
-                <div class="shadow overflow-hidden sm:rounded-md">
+                <div class="shadow overflow-hidden bg-white sm:rounded-md">
                     <div class="bg-orange-500 px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-white">
+                        <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                         Responsibilities List
                         </h3>
-                        <p class="mt-1 max-w-2xl text-sm text-white">
+                        <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                         Areas of operation, under responsibility of the TMO organisation
                         </p>
                     </div>
                     @foreach( $functions as $category)
-                    <p class="mt-3 ml-6 max-w-2xl text-sm text-bold text-grey-800">{{ $category->category }}</p>
+                    <p class="mt-6 ml-9 max-w-2xl text-sm text-bold text-grey-800">{{ $category->category }}</p>
                     @if(count($category->MatrixFunction) > 0)
                         <div class="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8">
                             <div class="block mb-8">
                                 <div class="flex flex-row flex-wrap">
                                     @foreach($category->MatrixFunction as $function)
-                                    <label class="inline-flex text-sm items-center mt-1 p-2">
+                                    <label class="inline-flex bg-white hover:bg-teal-400 text-sm mt-2 mb-2 mr-2 font-semibold py-1 px-2 border border-gray-300 rounded shadow">
                                       <input type="checkbox" name="function[]" value="{{ $function->id }}" class="form-checkbox h-5 w-5 text-black"
                                             @if(in_array($function->id, $clientFunctions)) checked @endif >
-                                      <span class="ml-2 text-black"> {{ $function->function }}</span>
+                                      <span class="ml-2 text-gray-800 hover:text-white"> {{ $function->function }}</span>
                                     </label>
                                     @endforeach
                                 </div>

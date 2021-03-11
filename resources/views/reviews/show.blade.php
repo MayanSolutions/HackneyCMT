@@ -5,20 +5,21 @@
         </h2>
     </x-slot>
     <div>
-        <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="block mb-8">
                 <a href="{{ route('reviewslist.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">Review List</a>
                 <a href="/surveys/{{ $review->id }}-{{ Str::slug($review->id) }}" class="bg-green-400 hover:bg-green-500 text-white font-bold text-xs py-2 px-4 rounded">Live Submission</a>
              </div>
                 <div class="bg-purple-600 shadow overflow-hidden sm:rounded-lg">
                     <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-white">
+                        <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                             {{ $review->title }}
                         </h3>
-                        <p class="mt-1 max-w-2xl text-sm text-white">
+                        <p class="mb-1 mt-1 ml-1 max-w-2xl text-sm text-white">
                             {{ $review->purpose }}
                         </p>
-                        <p class="mt-1 max-w-2xl text-xs text-white">
+                        <br>
+                        <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                             {{ $review->version }}
                         </p>
                     </div>

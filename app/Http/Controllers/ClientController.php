@@ -70,9 +70,9 @@ class ClientController extends Controller
         $this->validate($request, [
             'client_organisation' => 'required|unique:clients,client_organisation',
             'client_address' => 'required',
-            'client_pfn' => 'required|string|min:11|numeric',
+            'client_pfn' => 'required|string|min:11',
             'client_manager' => 'required',
-            'client_manager_contact' => 'required|string|min:11|numeric',
+            'client_manager_contact' => 'required|string|min:11',
             'client_manager_email' => 'required',
             'client_deputy' => 'required',
             'client_chair' => 'required',

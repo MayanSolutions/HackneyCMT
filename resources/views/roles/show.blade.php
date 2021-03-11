@@ -15,11 +15,11 @@
          <div class="mt-5 md:mt-0 md:col-span-2">
             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
-                    <h3 class="text-lg leading-6 font-medium text-gray-700">
+                    <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-gray-700">
                         System Profile
                     </h3>
                     @foreach( $roles as $role)
-                    <p class="mt-1 max-w-2xl text-sm text-gray-600">
+                    <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-gray-600">
                         System permissions for {{ $role->title }} profile
                     </p>
                     @endforeach
@@ -134,11 +134,11 @@
                     <div class="-my-2 bg-white overflow-x-auto sm:-mx-6 lg:-mx-8">
                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="px-4 py-5 sm:px-6">
-                            <h3 class="text-lg leading-6 font-medium text-gray-700">
+                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-gray-700">
                                 Registered Accounts
                             </h3>
                             @foreach( $roles as $role)
-                            <p class="mt-1 max-w-2xl text-sm text-gray-600">
+                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-gray-600">
                                 Account using the  {{ $role->title }} profile
                             </p>
                             @endforeach

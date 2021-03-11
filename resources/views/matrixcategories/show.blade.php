@@ -6,7 +6,7 @@
        </h2>
     </x-slot>
     <div>
-       <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
+       <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
         <div class="block mb-8">
             @can('can_view_matrix_cat')
             <a href="{{ route('matrixcategories.index') }}" class="bg-gray-400 text-white hover:bg-gray-500 hover:text-white font-bold text-xs py-2 px-4 rounded">Housing Functions</a>
@@ -14,12 +14,12 @@
         </div>
 
          <div class="mt-5 md:mt-0 md:col-span-2">
-                <div class="bg-purple-500 shadow overflow-hidden sm:rounded-lg">
-                    <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-white">
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                    <div class="bg-purple-500 px-4 py-5 sm:px-6">
+                        <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                             {{ $category->category }}
                         </h3>
-                        <p class="mt-1 max-w-2xl text-sm text-white">
+                        <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                             Please consult with finance before adding any new functions
                         </p>
                     </div>
@@ -47,12 +47,12 @@
                                                 Description
                                             </th>
 
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 text-right tracking-wider">
                                                 <a name="add" id="add" class="inline-block rounded-full text-white
                                                 bg-green-700 hover:bg-gray-500 duration-300
                                                 text-xs font-bold
                                                 md:px-4 py-1
-                                                opacity-90 hover:opacity-100">New</a>
+                                                opacity-90 hover:opacity-100">Add Function</a>
 
                                             </th>
                                         </tr>
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
                                     <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                                        Add Functions
+                                        Create
                                     </button>
                                 </div>
                                 <script type="text/javascript">
@@ -83,20 +83,24 @@
                 <br>
                         <div class="border-t border-gray-200">
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                <form action="{{ route('matrixcategories.show', $category->id) }}" method="GET" role="search">
-                                    <div class="pt-2 relative mx-auto float-right mr-3 mb-2 text-gray-600">
-                                      <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" name="function" placeholder="Search Function">
-                                      <button type="submit" id="function" class="absolute right-0 top-0 mt-5 mr-4">
-                                        <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                                          xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                                          viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
-                                          width="512px" height="512px">
-                                          <path
-                                            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                                        </svg>
-                                      </button>
-                                    </div>
-                                 </form>
+                                    <h3 class="mb-2 mt-4 ml-6 font-extrabold float-left tracking-tight text-gray-700">
+                                        Housing Function
+                                    </h3>
+                                        <form action="{{ route('matrixcategories.show', $category->id) }}" method="GET" role="search">
+                                            <div class="pt-2 relative mx-auto float-right mr-3 mb-2 text-gray-600">
+                                            <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" name="function" placeholder="Search Function">
+                                            <button type="submit" id="function" class="absolute right-0 top-0 mt-5 mr-4">
+                                                <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+                                                viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                                                width="512px" height="512px">
+                                                <path
+                                                    d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                                                </svg>
+                                            </button>
+                                            </div>
+                                        </form>
+
                                 @if (count($functions) > 0)
                                 <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">

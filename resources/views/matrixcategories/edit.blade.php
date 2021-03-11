@@ -8,17 +8,17 @@
     </x-slot>
 
     <div>
-        <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <form method="post" action="{{ route('matrixcategories.update', $category->id) }}">
                     @csrf
                     @method('put')
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="bg-purple-500 px-4 py-5 sm:px-6">
-                            <h3 class="text-lg leading-6 font-medium text-white">
+                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                               Service
                             </h3>
-                            <p class="mt-1 max-w-2xl text-sm text-white">
+                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                               Describe the service accurately to avoid confusion
                             </p>
                         </div>

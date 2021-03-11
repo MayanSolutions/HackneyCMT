@@ -6,23 +6,23 @@
     </x-slot>
 
     <div>
-        <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <form method="post" action="{{ route('clients.store') }}">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="bg-purple-500 px-4 py-5 sm:px-6">
-                            <h3 class="text-lg leading-6 font-medium text-white">
+                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                               Client Details
                             </h3>
-                            <p class="mt-1 max-w-2xl text-sm text-white">
+                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                               Please complete using TMO office information only
                             </p>
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_organisation" class="block font-medium text-sm text-gray-700">Organisation</label>
-                            <input type="text" name="client_organisation" value="{{ old('client_organisation') }} " id="client_organisation" class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="text" name="client_organisation" value="{{ old('client_organisation') }}" id="client_organisation" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_organisation')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -30,7 +30,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_pfn_email" class="block font-medium text-sm text-gray-700">Office Email</label>
-                            <input type="email" name="client_pfn_email" value="{{ old('client_pfn_email') }} " id="client_pfn_email" class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="email" name="client_pfn_email" value="{{ old('client_pfn_email') }}" id="client_pfn_email" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_pfn_email')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -46,7 +46,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_pfn" class="block font-medium text-sm text-gray-700">Office Contact No</label>
-                            <input type="text" name="client_pfn" id="client_pfn" value="{{ old('client_pfn') }} " class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="number" name="client_pfn" id="client_pfn" value="{{old('client_pfn')}}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_pfn')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -57,17 +57,17 @@
 
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="bg-purple-500 px-4 py-5 sm:px-6">
-                            <h3 class="text-lg leading-6 font-medium text-white">
+                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                               Management Details
                             </h3>
-                            <p class="mt-1 max-w-2xl text-sm text-white">
+                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                               Please complete using TMO staff information only
                             </p>
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_manager" class="block font-medium text-sm text-gray-700">Office Manager</label>
-                            <input type="text" name="client_manager" id="client_manager" value="{{ old('client_manager') }} " class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="text" name="client_manager" id="client_manager" value="{{ old('client_manager') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_manager')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -75,7 +75,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_manager_email" class="block font-medium text-sm text-gray-700">Manager's Email</label>
-                            <input type="email" name="client_manager_email" id="client_manager_email" value="{{ old('client_manager_email') }} " class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="email" name="client_manager_email" id="client_manager_email" value="{{ old('client_manager_email') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_manager_email')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -83,7 +83,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_manager_contact" class="block font-medium text-sm text-gray-700">Manager's Contact No</label>
-                            <input type="text" name="client_manager_contact" id="client_manager_contact" value="{{ old('client_manager_contact') }} " class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="number" name="client_manager_contact" id="client_manager_contact" value="{{ old('client_manager_contact') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_manager_contact')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -91,7 +91,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_deputy" class="block font-medium text-sm text-gray-700">Deputising Officer</label>
-                            <input type="text" name="client_deputy" id="client_deputy" value="{{ old('client_deputy') }} " class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="text" name="client_deputy" id="client_deputy" value="{{ old('client_deputy') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_deputy')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -102,17 +102,17 @@
 
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="bg-purple-500 px-4 py-5 sm:px-6">
-                            <h3 class="text-lg leading-6 font-medium text-white">
+                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                               Board Member Details
                             </h3>
-                            <p class="mt-1 max-w-2xl text-sm text-white">
+                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                               Please complete using TMO board information only
                             </p>
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_chair" class="block font-medium text-sm text-gray-700">Board Chair</label>
-                            <input type="text" name="client_chair" id="client_chair" value="{{ old('client_chair') }} " class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="text" name="client_chair" id="client_chair" value="{{ old('client_chair') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_chair')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -120,7 +120,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_chair_email" class="block font-medium text-sm text-gray-700">Chair's Email</label>
-                            <input type="email" name="client_chair_email" id="client_chair_email" value="{{ old('client_chair_email') }} " class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="email" name="client_chair_email" id="client_chair_email" value="{{ old('client_chair_email') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_chair_email')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -128,7 +128,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_chair_contact" class="block font-medium text-sm text-gray-700">Chair's Contact No</label>
-                            <input type="text" name="client_chair_contact" id="client_chair_contact" value="{{ old('client_chair_contact') }} " class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="number" name="client_chair_contact" id="client_chair_contact" value="{{ old('client_chair_contact') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_chair_contact')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -136,7 +136,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_secretary" class="block font-medium text-sm text-gray-700">Board Secretary</label>
-                            <input type="text" name="client_secretary" id="client_secretary" value="{{ old('client_secretary') }} " class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="text" name="client_secretary" id="client_secretary" value="{{ old('client_secretary') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_secretary')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -147,10 +147,10 @@
 
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="bg-purple-500 px-4 py-5 sm:px-6">
-                            <h3 class="text-lg leading-6 font-medium text-white">
+                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                             Assign Liaison Officer
                             </h3>
-                            <p class="mt-1 max-w-2xl text-sm text-white">
+                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-gray-600">
                             This can be done at a later point if required
                             </p>
                         </div>

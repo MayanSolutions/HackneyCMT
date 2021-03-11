@@ -5,17 +5,17 @@
         </h2>
     </x-slot>
     <div>
-        <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="block mb-8">
                 <a href="{{ route('estatedetails.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">Estate List</a>
              </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <div class="bg-purple-600 shadow overflow-hidden sm:rounded-lg">
-                    <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-white">
+                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                    <div class="bg-purple-600 px-4 py-5 sm:px-6">
+                        <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                             Liaison Officer
                         </h3>
-                        <p class="mt-1 max-w-2xl text-xs text-white">
+                        <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                             This client has been assigned to the below officer
                         </p>
                     </div>
@@ -102,10 +102,10 @@
 
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                         <div class="px-4 py-5 sm:px-6">
-                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-grey-900">
                                 Estate Details
                             </h3>
-                            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-gray-500">
                                 Information relating to the estate makeup
                             </p>
                         </div>
@@ -151,10 +151,10 @@
             <br>
             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">
+                    <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-grey-900">
                         Estate Facilities
                     </h3>
-                    <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                    <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-gray-500">
                         Communal areas of the estate, managed by the TMO
                     </p>
                 </div>

@@ -6,7 +6,7 @@
     </x-slot>
     <div>
 
-       <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
+       <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
           <div class="block mb-8">
             <a href="{{ route('clients.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">TMO Profiles</a>
               @if ($emptyProfiles->count() > 0)

@@ -6,7 +6,7 @@
     </x-slot>
     <div>
 
-       <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
+       <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
            @can('can_create_matrix_cat')
             <div class="block mb-8">
                 <a href="{{ route('matrixcategories.create') }}" class="bg-green-400 hover:bg-green-600 text-white font-bold text-xs py-2 px-4 rounded">Create Service</a>
