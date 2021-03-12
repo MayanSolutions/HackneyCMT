@@ -17,12 +17,11 @@
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" ></script>
+        <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     </head>
     <body class="font-sans antialiased bg-gray-100">
-        <div id="loader" class="center"></div>
         @include('sweetalert::alert')
 
         <section id="loading">
@@ -45,7 +44,6 @@
         </div>
 
         @stack('modals')
-
         @livewireScripts
     </body>
 </html>

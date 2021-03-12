@@ -21,6 +21,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('matrixcategories', \App\Http\Controllers\MatrixCategoryController::class);
     Route::resource('matrixfunctions', \App\Http\Controllers\MatrixFunctionController::class);
     Route::resource('clientfunctions', \App\Http\Controllers\ClientFunction::class);
+    Route::get('/estatedetails/create/{id}', [\App\Http\Controllers\EstateDetailController::class, 'create']);
+    Route::post('/estatedetails/{clients}', [\App\Http\Controllers\EstateDetailController::class, 'store'])->name('estatedetails.custom.store');
     Route::resource('estatedetails', \App\Http\Controllers\EstateDetailController::class);
     Route::resource('reviewslist', \App\Http\Controllers\ReviewHomeController::class);
 

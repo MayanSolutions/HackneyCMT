@@ -118,7 +118,7 @@
                                This TMO does not have an estate makeup. Please click below to create an estate profile. Please do not ignore this warning !
                             </h2>
                             <div class="mb-0 space-x-0 md:space-x-2">
-                               <a href="{{ route('estatedetails.create') }}" class="inline-block rounded-full text-white
+                               <a href="/estatedetails/create/{{$clientDetails->id}}" class="inline-block rounded-full text-white
                                bg-gray-600 hover:bg-purple-600 duration-300
                                text-xs font-bold
                                mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1
@@ -163,6 +163,7 @@
              </div>
 
              @endif
+             <br>
 
              <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">

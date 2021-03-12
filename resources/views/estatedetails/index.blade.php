@@ -9,11 +9,6 @@
        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
           <div class="block mb-8">
             <a href="{{ route('clients.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">TMO Profiles</a>
-              @if ($emptyProfiles->count() > 0)
-              @can('can_create_estates')
-              <a href="{{ route('estatedetails.create') }}" class="bg-green-400 hover:bg-green-600 text-white font-bold text-xs py-2 px-4 rounded">Create Estate</a>
-             @endcan
-             @endif
           </div>
           <div class="flex flex-col">
              <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

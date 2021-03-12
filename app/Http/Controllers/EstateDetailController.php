@@ -45,13 +45,13 @@ class EstateDetailController extends Controller
 
     }
 
-    public function create()
+    public function create($id)
     {
         abort_if(Gate::denies('can_create_estates'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
 
-        $clients = clients::doesntHave('EstateDetails')->get();
+        $filterClient = clients::doesntHave('EstateDetails')->where('id', $id)->first();
 
-        return view('estatedetails.create', compact('clients'));
+        return view('estatedetails.create', compact('filterClient'));
     }
 
     /**
@@ -60,10 +60,9 @@ class EstateDetailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Clients $clients)
     {
         $this->validate($request, [
-            'client_id' => 'required|numeric',
             'no_of_units' => 'required|numeric',
             'freeholders'    => 'required|numeric',
             'leaseholders'  => 'required|numeric',
@@ -81,7 +80,7 @@ class EstateDetailController extends Controller
                 $propertycalculation = $request->freeholders + $request->leaseholders + $request->tenants;
 
                 EstateDetail::create([
-                    'client_id' => $request->input('client_id'),
+                    'client_id' => $clients->id,
                     'no_of_units' => $propertycalculation,
                     'freeholders' => $request->input('freeholders'),
                     'leaseholders' => $request->input('leaseholders'),
@@ -96,7 +95,7 @@ class EstateDetailController extends Controller
             }else{
 
             EstateDetail::create([
-            'client_id' => $request->input('client_id'),
+            'client_id' => $clients->id,
             'no_of_units' => $propertycalculation,
             'freeholders' => $request->input('freeholders'),
             'leaseholders' => $request->input('leaseholders'),

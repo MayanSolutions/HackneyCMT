@@ -8,41 +8,16 @@
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="post" action="{{ route('estatedetails.store') }}">
+                <form method="post" action="{{ route('estatedetails.custom.store', ['clients' => $filterClient->id]) }}">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
-                        <div class="bg-purple-500 px-4 py-5 sm:px-6">
+                        <div class="bg-teal-500 px-4 py-5 sm:px-6">
                             <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
-                              TMO Organisation
+                              {{ $filterClient->client_organisation}}
                             </h3>
                             <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
-                                Only organisation without estate profiles are avaliable for selection.
+                                {{ $filterClient->client_address }}
                             </p>
-                        </div>
-
-                        <div class="px-4 py-5 bg-white sm:p-6">
-
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class=" bg-white sm:p-6">
-                                        <select name="client_id" id="client_id" class="w-full float-left h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
-                                            <option value="">Select Client</option>
-                                            @foreach($clients as $client)
-                                            <option value="{{ $client->id }}">{{ $client->client_organisation }}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <p class="mt-1 max-w-2xl text-xs text-gray-500">
-                                            Please select the client to which you would like to create a Estate Profile for
-                                        </p>
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
                     </div>
                     <br>
@@ -53,7 +28,7 @@
                               Resident Profile
                             </h3>
                             <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
-                                The resident profile is based off the count of differet tenures residing on the estate
+                             The resident profile is based off the count of differet tenures residing on the estate
                             </p>
                         </div>
 
