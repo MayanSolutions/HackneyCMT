@@ -8,7 +8,7 @@
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="post" action="/reviews/{{ $review->id }}/questions">
+                <form method="post" class="form-prevent-double-click" action="/reviews/{{ $review->id }}/questions">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="bg-purple-500 px-4 py-5 sm:px-6">
@@ -68,8 +68,8 @@
                                     </div>
                             </fieldset>
                             <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                                    Add Question
+                                <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 button-prevent-double-click">
+                                    <i><x-heroicon-s-badge-check class="h-5 w-5 text-white prevent-double" /></i> Add Question
                                 </button>
                             </div>
                         </div>

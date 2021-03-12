@@ -79,9 +79,9 @@
                                             </td>
                                          <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-500">
-                                                <a href="{{ $review->publicpath() }}"  class="inline-flex bg-white hover:bg-lilac-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Live Submission</a>
+                                                <a href="{{ $review->publicpath() }}"  class="inline-flex bg-white hover:bg-green-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Live Submission</a>
 
-                                                <a href="{{ $review->path() }}"  class="inline-flex bg-white hover:bg-purple-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Show</a>
+                                                <a href="{{ $review->path() }}"  class="inline-flex bg-white hover:bg-blue-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Show/Modify</a>
                                             </div>
                                          </td>
                                         </tr>
