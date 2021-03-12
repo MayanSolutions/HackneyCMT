@@ -7,6 +7,9 @@
 
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            <div class="block mb-8">
+                <a href="{{ URL::previous() }}" class="bg-teal-400 hover:bg-teal-600 text-white font-bold text-xs py-2 px-4 rounded">Go Back</a>
+          </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <form method="post" action="{{ route('users.update', $user->id) }}">
                     @csrf
