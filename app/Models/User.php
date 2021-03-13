@@ -119,6 +119,6 @@ class User extends Authenticatable
         if (trim($password) === '') {
             return;
         }
-        $this->attributes['password'] = bcrypt($password);
+        $this->attributes['password'] = Hash::make($password);
     }
 }
