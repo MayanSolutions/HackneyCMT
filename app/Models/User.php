@@ -44,6 +44,7 @@ class User extends Authenticatable
         'organisation',
         'job_title',
         'department',
+        'active',
     ];
 
     /**

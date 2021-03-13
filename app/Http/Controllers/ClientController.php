@@ -7,17 +7,12 @@ use App\Models\clients;
 use App\Models\User;
 use App\Models\MatrixFunction;
 use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         abort_if(Gate::denies('client_access'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
@@ -44,11 +39,7 @@ class ClientController extends Controller
         return view('clients.index',compact('clients', 'emptyProfiles'));
 
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         abort_if(Gate::denies('client_create'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
@@ -58,12 +49,6 @@ class ClientController extends Controller
         return view('clients.create',compact('liaison_officers'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $liaison_officers = User::get();
@@ -95,25 +80,15 @@ class ClientController extends Controller
                 'user_id' => $request->input('liaison_officer'),
                 ]);
 
-
-
-                alert()->toast('Client profile created', 'success')->persistent('Close')->autoclose(6000);
-                return redirect()->route('clients.index');
+                return redirect()->route('clients.index')->withSuccessMessage('TMO profile created');;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id, Request $request)
     {
         abort_if(Gate::denies('client_access'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
 
         $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
-
-           $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
+        $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
         $functions = MatrixFunction::all();
         $clientFunctions = DB::table('matrix_functions')
             ->join('clients_matrix_function', 'clients_matrix_function.function_id', '=', 'id')
@@ -128,20 +103,12 @@ class ClientController extends Controller
         }else{
             $control = $functions->count() / $clientFunctions->count() *100;
         }
-
         $emptyProfiles = clients::doesntHave('EstateDetails')->where('id',$id)->get();
-
         $liaisonDetails = User::where('id', $clientDetails->user_id)->get();
 
         return view('clients.show', compact('clientDetails','liaisonDetails', 'emptyProfiles', 'clientDetails', 'control'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         abort_if(Gate::denies('client_edit'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
@@ -151,16 +118,8 @@ class ClientController extends Controller
         $liaison_officers = User::get();
 
         return view('clients.edit', compact('clients', 'liaison_officers'));
-
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -191,9 +150,8 @@ class ClientController extends Controller
                 'client_secretary' => $request->input('client_secretary'),
                 'user_id' => $request->input('liaison_officer'),
                 ]);
-            alert()->toast('Client Profile updated', 'success')->persistent('Close')->autoclose(6000);
 
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->withSuccessMessage('TMO profile updated');
     }
 
     /**
@@ -208,7 +166,6 @@ class ClientController extends Controller
 
         $clients = clients::find($id);
         $clients->delete();
-        alert()->toast('Client deleted', 'success')->persistent('Close')->autoclose(6000);
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->withSuccessMessage('TMO profile deleted');
     }
 }

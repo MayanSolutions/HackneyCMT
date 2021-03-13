@@ -7,21 +7,14 @@ use app\Models\Role;
 use app\Models\User;
 use app\Models\Permission;
 use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
-
         $roles = Role::where([
             ['title', '!=', Null],
             [function ($query) use ($request) {
@@ -37,11 +30,6 @@ class RoleController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
@@ -49,12 +37,6 @@ class RoleController extends Controller
         return view('roles.create',compact('permission'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
             $this->validate($request, [
@@ -73,16 +55,10 @@ class RoleController extends Controller
                     ];
                 }
             $update_rolePermissions = DB::table('permission_role')->insert($permission_data);
-            alert()->toast('Profile created', 'success')->persistent('Close')->autoclose(6000);
-            return redirect()->route('roles.index');
+
+            return redirect()->route('roles.index')->withSuccessMessage('Profile created');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
@@ -104,12 +80,6 @@ class RoleController extends Controller
         return view('roles.show',compact('roles','rolePermissions', 'profile_users'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
@@ -127,16 +97,8 @@ class RoleController extends Controller
         return view('roles.edit',compact('role', 'roles', 'permissions', 'rolePermissions'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-
             $this->validate($request, [
             'title' => 'required',
             'permission' => 'required',
@@ -146,16 +108,9 @@ class RoleController extends Controller
             $role->title = $request->input('title');
             $role->save();
             $role->permissions()->sync($request->input('permission', []));
-            alert()->toast('Permissions updated', 'success')->persistent('Close')->autoclose(6000);
-            return redirect()->route('roles.index');
+            return redirect()->route('roles.index')->withSuccessMessage('Profile updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
@@ -167,12 +122,11 @@ class RoleController extends Controller
         ->count();
 
         if( $userCount > 0 ) {
-            Alert::error('Failed', 'You cannot delete a profile which is still in use');
+            alert()->warning('Failed', 'You cannot delete a profile which is still in use');
             return redirect()->route('roles.index');
         } else {
         $role->delete();
-        alert()->toast('Profile deleted', 'success')->persistent('Close')->autoclose(6000);
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->withSuccessMessage('Profile deleted');;
         }
     }
 }

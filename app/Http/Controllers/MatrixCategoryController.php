@@ -5,21 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\MatrixCategory;
 use App\Models\MatrixFunction;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\FunctionRequest;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use RealRashid\SweetAlert\ToSweetAlert;
+
 
 class MatrixCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         abort_if(Gate::denies('can_view_matrix_cat'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
@@ -35,29 +29,16 @@ class MatrixCategoryController extends Controller
         ->orderBy('id', 'desc')
         ->paginate(4);
 
-
         return view('matrixcategories.index',compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         abort_if(Gate::denies('can_create_matrix_cat'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
 
-
         return view('matrixcategories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -98,18 +79,11 @@ class MatrixCategoryController extends Controller
                 $functions->save();
                 }
 
-                alert()->toast('Management Service and Function Created', 'success')->persistent('Close')->autoclose(6000);
-                return redirect()->route('matrixcategories.index');
+                return redirect()->route('matrixcategories.index')->withSuccessMessage('Service created');
 
                 }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MatrixCategory  $matrixCategory
-     * @return \Illuminate\Http\Response
-     */
     public function show(Request $request, $id)
     {
         abort_if(Gate::denies('can_view_matrix_cat'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
@@ -137,12 +111,6 @@ class MatrixCategoryController extends Controller
         return view('matrixcategories.show',compact ('category', 'functions'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MatrixCategory  $matrixCategory
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $category = MatrixCategory::find($id);
@@ -151,13 +119,6 @@ class MatrixCategoryController extends Controller
         return view('matrixcategories.edit',compact('category', 'functions'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MatrixCategory  $matrixCategory
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
             $this->validate($request, [
@@ -170,16 +131,9 @@ class MatrixCategoryController extends Controller
             $category->description = $request->input('description');
             $category->save();
 
-            alert()->toast('Function updated', 'success')->persistent('Close')->autoclose(6000);
-            return redirect()->route('matrixcategories.index');
+            return redirect()->route('matrixcategories.index')->withSuccessMessage('Function updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\MatrixCategory  $matrixCategory
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $checkfuntions = MatrixFunction::where('matrix_category_id', $id)->count();
@@ -193,8 +147,7 @@ class MatrixCategoryController extends Controller
         $category = MatrixCategory::find($id);
         $category->delete();
 
-        alert()->toast('Housing Service deleted successfully', 'success')->persistent('Close')->autoclose(6000);
-        return redirect()->route('matrixcategories.index');
+        return redirect()->route('matrixcategories.index')->withSuccessMessage('Service deleted');
         }
     }
 }

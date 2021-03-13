@@ -196,6 +196,7 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'can_delete_digi_reviews',
                 'description' => 'Can delete digital Reviews'
             ],
+            
         ];
 
         Permission::insert($permissions);

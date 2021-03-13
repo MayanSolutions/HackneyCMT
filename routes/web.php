@@ -7,14 +7,14 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified', 'checkuserstatus'])->get('/dashboard', function () {
+    return view('dashboard');})->name('dashboard');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'checkuserstatus']], function () {
 
     // system resource controllers
     Route::resource('tasks', \App\Http\Controllers\TasksController::class);
+    Route::post('/users/{id}', [\App\Http\Controllers\UsersController::class, 'active'])->name('users.custom.store');
     Route::resource('users', \App\Http\Controllers\UsersController::class);
     Route::resource('roles', \App\Http\Controllers\RoleController::class);
     Route::resource('clients', \App\Http\Controllers\ClientController::class);

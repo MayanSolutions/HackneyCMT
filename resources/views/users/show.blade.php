@@ -10,6 +10,51 @@
                 <a href="{{ URL::previous() }}" class="bg-teal-400 hover:bg-teal-600 text-white font-bold text-xs py-2 px-4 rounded">Go Back</a>
                 <a href="{{ route('users.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">Accounts List</a>
             </div>
+            <div class="block mb-5">
+                @if($user->active == true)
+                <div class="inline-block"><h2 class="font-semibold text-xl text-gray-600 ml-2 leading-tight text-left">Active </h2></div>
+                <div class="inline-block"><x-heroicon-s-badge-check class="ml-2 h-4 w-4 text-green-500"/></div>
+                @else
+                <div class="inline-block"><h2 class="font-semibold text-xl text-gray-600 ml-2 leading-tight">Inactive</h2></div>
+                <div class="inline-block"><x-heroicon-s-ban class="ml-1 h-4 w-4 text-red-600" /></div>
+                @endif
+                @can('user_edit')
+                <div class="ml-1 inline-block">
+                <form method="post" id="activetoggle" action="{{ route('users.custom.store', $user->id) }}">
+                @csrf
+                    <label class="flex items-center">
+                        <input class="relative w-10 h-5 transition-all duration-200 ease-in-out bg-gray-400 rounded-full shadow-inner outline-none appearance-none "
+                        type="checkbox" value="" {{ $user->active ? 'checked' : '' }}
+                        onchange="document.getElementById('activetoggle').submit()"/>
+                      </label>
+                      <style>
+                        input:before {
+                          content: '';
+                          position: absolute;
+                          width: 1.25rem;
+                          height: 1.25rem;
+                          border-radius: 50%;
+                          top: 0;
+                          left: 0;
+                          transform: scale(1.1);
+                          box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.2);
+                          background-color: white;
+                          transition: .2s ease-in-out;
+                        }
+
+                        input:checked {
+                          @apply: bg-indigo-400;
+                          background-color:#7f9cf5;
+                        }
+
+                        input:checked:before {
+                          left: 1.25rem;
+                        }
+                      </style>
+                      </form>
+                </div>
+                @endcan
+            </div>
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                   <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

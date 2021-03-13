@@ -50,9 +50,7 @@ class UsersController extends Controller
 
         $user->roles()->sync($request->input('roles', []));
 
-        alert()->toast('Account created', 'success')->persistent('Close')->autoclose(6000);
-
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->withSuccessMessage('Account created');
     }
 
     public function show(User $user, Request $request)
@@ -80,9 +78,7 @@ class UsersController extends Controller
         $user->update($request->validated());
         $user->roles()->sync($request->input('roles', []));
 
-        alert()->toast('Account updated', 'success')->persistent('Close')->autoclose(6000);
-
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->withSuccessMessage('Account updated');
     }
 
     public function destroy(User $user)
@@ -91,8 +87,25 @@ class UsersController extends Controller
 
         $user->delete();
 
-        alert()->toast('Account deleted', 'warning')->persistent('Close')->autoclose(6000);
+        return redirect()->route('users.index')->withSuccessMessage('Account deleted');
+    }
 
-        return redirect()->route('users.index');
+    public function active($id)
+    {
+
+        $user = User::find($id);
+
+        if($user->active == true)
+        {
+            $user->update(['active' => false]);
+            $user->save();
+        }
+        else
+        {
+            $user->update(['active' => true ]);
+            $user->save();
+        }
+
+        return back()->withSuccessMessage('status changed');
     }
 }

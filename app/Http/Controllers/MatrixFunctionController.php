@@ -6,7 +6,6 @@ use App\Models\MatrixCategory;
 use App\Models\MatrixCatergory;
 use App\Models\MatrixFunction;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +29,6 @@ class MatrixFunctionController extends Controller
             'function_description.*'  => 'required',
             ]);
 
-
         if($request->function > 0){
 
             $count = count($request->function);
@@ -51,11 +49,8 @@ class MatrixFunctionController extends Controller
             $functions->save();
             }
 
-            alert()->toast('Management Function Created', 'success')->persistent('Close')->autoclose(6000);
-            return back();
+            return back()->withSuccessMessage('Function created');
         }
-
-
     }
 
     public function destroy($id)
@@ -64,8 +59,7 @@ class MatrixFunctionController extends Controller
 
         $function = MatrixFunction::find($id);
         $function->delete();
-        alert()->toast('Function deleted', 'success')->persistent('Close')->autoclose(6000);
-        return back();
-    }
 
+        return back()->withSuccessMessage('Function deleted');
+    }
 }

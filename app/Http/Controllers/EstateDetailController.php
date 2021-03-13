@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\EstateDetail;
 use App\Models\MatrixFunction;
 use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
+
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -39,8 +39,6 @@ class EstateDetailController extends Controller
         ])
         ->orderBy('id', 'desc')
         ->paginate(4);;
-
-
         return view('estatedetails.index',compact('clients', 'emptyProfiles'));
 
     }
@@ -54,12 +52,6 @@ class EstateDetailController extends Controller
         return view('estatedetails.create', compact('filterClient'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, Clients $clients)
     {
         $this->validate($request, [
@@ -90,7 +82,7 @@ class EstateDetailController extends Controller
                     'communal_facilities' => $request->input('communal_facilities'),
                     ]);
 
-                    alert()->toast('The property count was inconsistant with estate property counts. Dont worry! This has been autocorrected by the system', 'warning')->persistent('Close')->autoclose(10000);
+                    alert()->toast('The property count did not add up. This has been autocorrected by the system', 'warning')->persistent('Close')->autoclose(10000);
                 return redirect()->route('estatedetails.index');
             }else{
 
@@ -105,63 +97,32 @@ class EstateDetailController extends Controller
             'communal_facilities' => $request->input('communal_facilities'),
             ]);
 
-            alert()->toast('Estate profile created successfully', 'success')->persistent('Close')->autoclose(6000);
-
-        return redirect()->route('estatedetails.index');
+        return redirect()->route('estatedetails.index')->withSuccessMessage('TMO estate updated');
             }
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id, Request $request)
     {
         abort_if(Gate::denies('can_access_estates'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
 
         $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
-
-        // $allFunctions = MatrixFunction::count();
-        // $clientFunctions = DB::table('matrix_functions')
-        // ->join('clients_matrix_function', 'clients_matrix_function.function_id', '=', 'id')
-        // ->select('clients_matrix_function.function_id','clients_matrix_function.function_id')
-        // ->where('client_id', $clientDetails->id)
-        // ->count();
-        // $control = $clientFunctions / $allFunctions * 100;
-
-
         $liaisonDetails = User::where('id', $clientDetails->user_id)->get();
 
         return view('estatedetails.show', compact('clientDetails','liaisonDetails',));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         abort_if(Gate::denies('can_edit_estates'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
 
         $clients = clients::with('EstateDetails')->where('id', $id)->first();
 
-
         return view('estatedetails.edit', compact('clients'));
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
 
@@ -196,7 +157,7 @@ class EstateDetailController extends Controller
                     'communal_facilities' => $request->input('communal_facilities'),
                 ]);
 
-                alert()->toast('The property count was inconsistant with estate property counts. Dont worry! This has been autocorrected by the system', 'warning')->persistent('Close')->autoclose(10000);
+                alert()->toast('The property count did not add up. This has been autocorrected by the system', 'warning')->persistent('Close')->autoclose(10000);
                 return redirect()->route('estatedetails.index');
              }else{
 
@@ -211,8 +172,7 @@ class EstateDetailController extends Controller
                         'communal_facilities' => $request->input('communal_facilities'),
                     ]);
 
-                    alert()->toast('Estate profile updated successfully', 'success')->persistent('Close')->autoclose(6000);
-                    return redirect()->route('estatedetails.index');
+                    return redirect()->route('estatedetails.index')->withSuccessMessage('TMO estate updated');
                 }
     }
 
@@ -228,9 +188,8 @@ class EstateDetailController extends Controller
 
         $estates = EstateDetail::find($id);
         $estates->delete();
-        alert()->toast('Estate profile deleted', 'success')->persistent('Close')->autoclose(6000);
 
-        return redirect()->route('estatedetails.index');
+        return redirect()->route('estatedetails.index')->withSuccessMessage('TMO estate deleted');
     }
 
 }

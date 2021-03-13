@@ -8,7 +8,6 @@ use App\Models\clients;
 use App\Models\MatrixFunction;
 use App\Models\MatrixCategory;
 use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -81,7 +80,6 @@ class ClientFunction extends Controller
 
     public function update(Request $request, $id)
     {
-
             $client = clients::find($id);
             if (isset($request->function)) {
 
@@ -90,7 +88,6 @@ class ClientFunction extends Controller
             }else{
                 $client->functions()->sync(array());
             }
-            alert()->toast('Responsibilities updated', 'success')->persistent('Close')->autoclose(6000);
-            return redirect()->route('clients.index');
+            return redirect()->route('clients.index')->withSuccessMessage('Responsibilities updated');
     }
 }

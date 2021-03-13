@@ -44,7 +44,7 @@
                 {{ $slot }}
             </main>
         </div>
-
+        @include('sweetalert::alert')
         @stack('modals')
         @livewireScripts
     </body>
