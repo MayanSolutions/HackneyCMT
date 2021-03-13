@@ -54,7 +54,7 @@
                                              bg-green-500 hover:bg-red-700 duration-300
                                              text-xs font-bold
                                              mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1
-                                             opacity-90 hover:opacity-100 ">Delete this question</a>
+                                             opacity-90 hover:opacity-100 prevent-double">Delete this question</a>
                     </form>
                     <br>
                 </div>

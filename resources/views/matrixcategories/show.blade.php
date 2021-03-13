@@ -52,7 +52,7 @@
                                                 bg-green-700 hover:bg-gray-500 duration-300
                                                 text-xs font-bold
                                                 md:px-4 py-1
-                                                opacity-90 hover:opacity-100">Add Function</a>
+                                                opacity-90 hover:opacity-100 ">Add Function</a>
 
                                             </th>
                                         </tr>

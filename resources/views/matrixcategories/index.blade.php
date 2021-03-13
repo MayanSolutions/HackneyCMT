@@ -86,7 +86,7 @@
                                                  <form class="inline-block" action="{{ route('matrixcategories.destroy', $category->id) }}" method="POST">
                                                  <input type="hidden" name="_method" value="DELETE">
                                                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                 <a type="submit" class="bg-white hover:bg-red-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow delete-confirm">Delete</a>
+                                                 <a type="submit" class="bg-white hover:bg-red-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow delete-confirm prevent-double">Delete</a>
                                               </form>
                                                 @endcan
                                            </td>
