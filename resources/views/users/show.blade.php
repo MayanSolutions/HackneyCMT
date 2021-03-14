@@ -197,7 +197,7 @@
                                     </div>
                                  </div>
                               </td>
-                              @if(empty($clientDetails->EstateDetails))
+                              @if(!empty($clientDetails->EstateDetails))
                               <td class="px-6 py-4 whitespace-nowrap">
                                  <div class="flex items-center">
                                     <div class="">
