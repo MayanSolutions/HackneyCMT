@@ -43,7 +43,7 @@ class WelcomeEmailNotification extends Notification
         return (new MailMessage)
                     ->line('Welcome to Mayan Solutions, our TMO management platform. An account has been created for you and your account information should be provided to you shortly')
                     ->line('Please ensure you change your password when you first login. This can be done by accessing My Profile.')
-                    ->action('My Account', url('www.mayansolutions.co.uk/login'));
+                    ->action('My Account', url('/login'));
     }
 
     /**
