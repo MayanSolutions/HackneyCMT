@@ -168,6 +168,7 @@
                            </tr>
                         </thead>
                         @foreach ($clientDetails as $client)
+                        @if(!empty($clientDetails->EstateDetails))
                         <tbody class="bg-white divide-y divide-gray-200">
                            <tr>
                               <td class="px-6 py-4 whitespace-nowrap">
@@ -197,7 +198,6 @@
                                     </div>
                                  </div>
                               </td>
-                              @if(!empty($clientDetails->EstateDetails))
                               <td class="px-6 py-4 whitespace-nowrap">
                                  <div class="flex items-center">
                                     <div class="">
@@ -207,7 +207,38 @@
                                     </div>
                                  </div>
                               </td>
-
+                            </tr>
+                        </tbody>
+                              @else
+                              <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                   <td class="px-6 py-4 whitespace-nowrap">
+                                      <div class="flex items-center">
+                                         <div class="">
+                                            <div class="text-sm font-medium text-gray-900">
+                                               {{ $client->client_organisation }}
+                                            </div>
+                                            <div class="text-sm text-gray-500">
+                                               {{ $client->client_pfn_email }}
+                                            </div>
+                                            <div class="text-xs text-gray-500">
+                                               {{ $client->client_pfn }}
+                                            </div>
+                                         </div>
+                                      </div>
+                                   </td>
+                                   <td class="px-6 py-4 whitespace-nowrap">
+                                      <div class="flex items-center">
+                                         <div class="">
+                                            <div class="text-sm font-medium text-gray-900">
+                                               {{ $client->client_manager }}
+                                            </div>
+                                            <div class="text-xs text-gray-500">
+                                               {{ $client->client_deputy }}
+                                            </div>
+                                         </div>
+                                      </div>
+                                   </td>
                               <td class="px-6 py-4 whitespace-nowrap">
                                  <div class="text-xs text-gray-500 ">
                                     {{ $client->EstateDetails->tenants }} Tenants
@@ -241,6 +272,8 @@
                                        0 Freeholders
                                    </div>
                                  </td>
+                                </tr>
+                              </tbody>
                                  @endif
 
                               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
