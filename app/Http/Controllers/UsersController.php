@@ -32,7 +32,7 @@ class UsersController extends Controller
             }]
         ])
         ->orderBy('id', 'desc')
-        ->paginate(4);
+        ->paginate(10);
 
         return view('users.index', compact('users'));
     }
