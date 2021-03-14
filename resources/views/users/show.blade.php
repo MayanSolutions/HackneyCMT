@@ -275,7 +275,6 @@
                                 </tr>
                               </tbody>
                                  @endif
-
                               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                  <a href="{{ route('clients.show', $client->id) }}" class="inline-flex bg-white hover:bg-purple-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Show</a>
                                  @can('client_edit')
@@ -283,6 +282,7 @@
                                      @endcan
                                 </td>
                            </tr>
+                           @endif
                            @endforeach
                            <!-- More items... -->
                         </tbody>
