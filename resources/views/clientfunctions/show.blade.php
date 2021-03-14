@@ -31,7 +31,7 @@
                             <p class="font-bold">Properties</p>
                           </div>
                           <div class="text-center">
-                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ $control }}</h6>
+                            <h6 class="text-3xl font-bold text-deep-purple-accent-400">{{ round($control) }}</h6>
                             <p class="font-bold">Functions</p>
                           </div>
                         </div>
