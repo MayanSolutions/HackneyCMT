@@ -54,7 +54,7 @@ class ClientFunction extends Controller
         }elseif($clientFunction->isEmpty()){
             $control = 0;
         }else{
-            $control = $functions->count() / $clientFunction->count() *100;
+            $control = $clientFunction->count() / $functions->count() *100;
         }
 
         return view('clientfunctions.show', compact('clients', 'clientFunctions', 'clientDetails', 'control'));
