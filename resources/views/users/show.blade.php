@@ -168,7 +168,6 @@
                            </tr>
                         </thead>
                         @foreach ($clientDetails as $client)
-                        @if(!empty($clientDetails->EstateDetails))
                         <tbody class="bg-white divide-y divide-gray-200">
                            <tr>
                               <td class="px-6 py-4 whitespace-nowrap">
@@ -202,79 +201,23 @@
                                  <div class="flex items-center">
                                     <div class="">
                                        <div class="text-sm font-medium text-gray-900">
-                                        {{ $client->EstateDetails->no_of_units }} Units
+                                        {{ $client->EstateDetails->no_of_units ?? "No Estate has been registered"}} Units
                                        </div>
                                     </div>
                                  </div>
                               </td>
-                            </tr>
-                        </tbody>
-                              @else
-                              <tbody class="bg-white divide-y divide-gray-200">
-                                <tr>
-                                   <td class="px-6 py-4 whitespace-nowrap">
-                                      <div class="flex items-center">
-                                         <div class="">
-                                            <div class="text-sm font-medium text-gray-900">
-                                               {{ $client->client_organisation }}
-                                            </div>
-                                            <div class="text-sm text-gray-500">
-                                               {{ $client->client_pfn_email }}
-                                            </div>
-                                            <div class="text-xs text-gray-500">
-                                               {{ $client->client_pfn }}
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </td>
-                                   <td class="px-6 py-4 whitespace-nowrap">
-                                      <div class="flex items-center">
-                                         <div class="">
-                                            <div class="text-sm font-medium text-gray-900">
-                                               {{ $client->client_manager }}
-                                            </div>
-                                            <div class="text-xs text-gray-500">
-                                               {{ $client->client_deputy }}
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </td>
+
                               <td class="px-6 py-4 whitespace-nowrap">
                                  <div class="text-xs text-gray-500 ">
-                                    {{ $client->EstateDetails->tenants }} Tenants
+                                    {{ $client->EstateDetails->tenants ?? "0"}} Tenants
                                 </div>
                                 <div class="text-xs text-gray-500 ">
-                                    {{ $client->EstateDetails->leaseholders }} Leaseholders
+                                    {{ $client->EstateDetails->leaseholders ?? "0"}} Leaseholders
                                 </div>
                                 <div class="text-xs text-gray-500 ">
-                                    {{ $client->EstateDetails->freeholders }} Freeholders
+                                    {{ $client->EstateDetails->freeholders ?? "0"}} Freeholders
                                 </div>
                               </td>
-                                @else
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                       <div class="">
-                                          <div class="text-sm font-medium text-gray-900">
-                                           No Estate has been registered
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </td>
-
-                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-xs text-gray-500 ">
-                                       0 Tenants
-                                   </div>
-                                   <div class="text-xs text-gray-500 ">
-                                       0 Leaseholders
-                                   </div>
-                                   <div class="text-xs text-gray-500 ">
-                                       0 Freeholders
-                                   </div>
-                                 </td>
-                                </tr>
-                              </tbody>
-                                 @endif
                               <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                  <a href="{{ route('clients.show', $client->id) }}" class="inline-flex bg-white hover:bg-purple-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Show</a>
                                  @can('client_edit')
@@ -282,7 +225,6 @@
                                      @endcan
                                 </td>
                            </tr>
-                           @endif
                            @endforeach
                            <!-- More items... -->
                         </tbody>
