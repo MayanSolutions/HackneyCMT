@@ -44,7 +44,7 @@
 {{ $salutation }}
 @else
 @lang('Regards'),<br>
-<img scr="{{ asset('images/MayanSoftwareSolutionsLogo.png') }}" alt="{{ config('app.name') }}"
+Mayan Software Solutions
 @endif
 
 {{-- Subcopy --}}
