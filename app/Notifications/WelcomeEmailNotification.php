@@ -41,9 +41,9 @@ class WelcomeEmailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Welcome to Mayan Solutions, TMO management platform')
-                    ->action('Login', url('www.mayansolutions.co.uk'))
-                    ->line('Thank you for using our application!');
+                    ->line('Welcome to Mayan Solutions, our TMO management platform. An account has been created for you and your account information should be provided to you shortly')
+                    ->line('Please ensure you change your password when you first login. This can be done by accessing My Profile.')
+                    ->action('My Account', url('www.mayansolutions.co.uk/login'));
     }
 
     /**
