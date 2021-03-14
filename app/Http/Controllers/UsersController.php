@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\clients;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\WelcomeEmailNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,6 +43,7 @@ class UsersController extends Controller
 
         $roles = Role::pluck('title', 'id');
 
+
         return view('users.create', compact('roles'));
     }
 
@@ -49,6 +52,8 @@ class UsersController extends Controller
         $user = User::create($request->validated());
 
         $user->roles()->sync($request->input('roles', []));
+
+        Notification::send($user, new WelcomeEmailNotification);
 
         return redirect()->route('users.index')->withSuccessMessage('Account created');
     }
