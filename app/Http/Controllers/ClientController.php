@@ -101,7 +101,7 @@ class ClientController extends Controller
         }elseif($clientFunctions->isEmpty()){
             $control = 0;
         }else{
-            $control = $clientFunction->count() / $functions->count() *100;
+            $control = $clientFunctions->count() / $functions->count() *100;
         }
         $emptyProfiles = clients::doesntHave('EstateDetails')->where('id',$id)->get();
         $liaisonDetails = User::where('id', $clientDetails->user_id)->get();
