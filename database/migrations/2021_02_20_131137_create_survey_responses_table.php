@@ -18,6 +18,9 @@ class CreateSurveyResponsesTable extends Migration
             $table->unsignedBigInteger('survey_id');
             $table->unsignedBigInteger('question_id');
             $table->unsignedBigInteger('answer_id');
+            $table->string('liaison_officer')->nullable();
+            $table->boolean('assessment_result')->nullable();
+            $table->string('comments')->nullable();
             $table->timestamps();
         });
     }

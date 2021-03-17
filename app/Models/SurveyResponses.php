@@ -30,7 +30,9 @@ class SurveyResponses extends Model
         'survey_id',
         'question_id',
         'answer_id',
-
+        'liaison_officer',
+        'assessment_result',
+        'comments',
     ];
 
     public function survey()
