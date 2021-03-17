@@ -23,10 +23,10 @@
                                 <h2 class="mb-2 mt-4 ml-6 font-extrabold float-left tracking-tight text-gray-700">
                                     Digital Annual Review Surveys
                                   </h2>
-                                  <form action="{{ route('matrixcategories.index') }}" method="GET" role="search">
-                                    @csrf
+
+                                  <form action="{{ route('reviewslist.index') }}" method="GET" role="search">
                                     <div class="pt-2 relative mx-auto float-right mr-3 mb-2 text-gray-600">
-                                      <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" name="category" placeholder="Search by category">
+                                      <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" name="review" placeholder="Search by Digital Review">
                                       <button type="submit" id="category" class="absolute right-0 top-0 mt-5 mr-4">
                                         <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                           xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -39,7 +39,7 @@
                                     </div>
                                  </form>
                                </div>
-
+                               @if (count($reviews) > 0)
                                   <table class="min-w-full divide-y divide-gray-200">
                                      <thead class="bg-gray-50">
                                         <tr>
@@ -89,11 +89,11 @@
                                      </tbody>
                                      @endforeach
                                   </table>
-
+                                  @else
                                   <section class="w-full bg-gradient-to-b from-gray-100 to-white">
                                       <div class="w-full px-4 py-10 mx-auto text-left md:text-center md:w-3/4 lg:w-2/4">
                                         <h2 class="mb-6 font-extrabold tracking-tight md:text-1xl md:mb-6 md:leading-tight">
-                                            Opps, It appears the Housing Service you looking for has not been registered on our system yet
+                                            Opps, It appears the Digital Review you looking for has not been registered on our system yet
                                           </h2>
                                         <div class="mb-0 space-x-0 md:space-x-2">
                                           <p class="mt-1 max-w-2xl text-xs text-gray-600 text-white">
@@ -101,8 +101,8 @@
                                           </p>
                                         </div>
                                       </div>
-                                    </section>
-
+                                </section>
+                                @endif
                             </div>
                          </div>
                       </div>

@@ -10,6 +10,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class SurveyController extends Controller
 {
+    public function index()
+    {
+
+        return view('surveys.index');
+    }
     public function show(Review $review, $slug)
     {
         $clients = clients::get();
