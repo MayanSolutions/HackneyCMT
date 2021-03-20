@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\Survey;
 use App\Models\clients;
+use App\Models\SurveyResponses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,9 +14,11 @@ class SurveyController extends Controller
 {
     public function index()
     {
+        $surveys = clients::with(['surveys.responses', 'surveys.review.questions.answers'])->get();
 
-        return view('surveys.index');
+        return view('surveys.index', compact('surveys'));
     }
+
     public function show(Review $review, $slug)
     {
         $clients = clients::get();
@@ -22,6 +26,8 @@ class SurveyController extends Controller
 
         return view('surveys.show', compact('review', 'clients'));
     }
+
+
 
     public function store(Review $review)
     {

@@ -158,9 +158,6 @@
              </div>
           </div>
           <br>
-
-
-
        </div>
     </div>
  </x-app-layout>

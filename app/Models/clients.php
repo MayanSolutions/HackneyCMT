@@ -68,4 +68,9 @@ public function EstateDetails()
     return $this->belongsTo(EstateDetail::class, 'id', 'client_id');
 }
 
+public function surveys()
+{
+    return $this->hasMany(survey::class, 'client_id', 'id');
+}
+
 }

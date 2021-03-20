@@ -25,7 +25,7 @@
                 @endcan
                 @can('review_access')
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="" :active="request()->routeIs('reviews.*')">
+                        <x-jet-nav-link href="{{ 'surveys.index' }}" :active="request()->routeIs('surveys.*')">
                             Reviews
                         </x-jet-nav-link>
                     </div>

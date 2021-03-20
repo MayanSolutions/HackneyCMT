@@ -111,6 +111,6 @@ class UsersController extends Controller
             $user->save();
         }
 
-        return back()->withSuccessMessage('status changed');
+        return back()->withSuccessMessage('Account status changed');
     }
 }
