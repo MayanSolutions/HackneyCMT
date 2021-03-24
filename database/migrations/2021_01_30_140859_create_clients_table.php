@@ -23,10 +23,6 @@ class CreateClientsTable extends Migration
             $table->string('client_manager_contact');
             $table->string('client_manager_email');
             $table->string('client_deputy');
-            $table->string('client_chair');
-            $table->string('client_chair_contact');
-            $table->string('client_chair_email');
-            $table->string('client_secretary');
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->timestamps();
         });

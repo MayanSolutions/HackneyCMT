@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\clients;
 use App\Models\User;
 use App\Models\MatrixFunction;
+use App\Models\Members;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Response;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Carbon;
 
 class ClientController extends Controller
 {
@@ -60,8 +63,6 @@ class ClientController extends Controller
             'client_manager_contact' => 'required|string|min:11',
             'client_manager_email' => 'required',
             'client_deputy' => 'required',
-            'client_chair' => 'required',
-            'client_secretary' => 'required',
             ]);
 
             clients::create([
@@ -73,10 +74,6 @@ class ClientController extends Controller
                 'client_manager_contact' => $request->input('client_manager_contact'),
                 'client_manager_email' => $request->input('client_manager_email'),
                 'client_deputy' => $request->input('client_deputy'),
-                'client_chair' => $request->input('client_chair'),
-                'client_chair_contact' => $request->input('client_chair_contact'),
-                'client_chair_email' => $request->input('client_chair_email'),
-                'client_secretary' => $request->input('client_secretary'),
                 'user_id' => $request->input('liaison_officer'),
                 ]);
 
@@ -88,7 +85,10 @@ class ClientController extends Controller
         abort_if(Gate::denies('client_access'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
 
         $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
-        $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
+
+
+        $date = today()->format('Y-m-d');
+        $boardDetails = members::where('client_id', $id)->where('position_exp_date', '>=', Carbon::now())->get();
         $functions = MatrixFunction::all();
         $clientFunctions = DB::table('matrix_functions')
             ->join('clients_matrix_function', 'clients_matrix_function.function_id', '=', 'id')
@@ -103,10 +103,18 @@ class ClientController extends Controller
         }else{
             $control = $clientFunctions->count() / $functions->count() *100;
         }
+
         $emptyProfiles = clients::doesntHave('EstateDetails')->where('id',$id)->get();
+        $emptyBoard = clients::doesntHave('members')->where('id',$id)->get();
         $liaisonDetails = User::where('id', $clientDetails->user_id)->get();
 
-        return view('clients.show', compact('clientDetails','liaisonDetails', 'emptyProfiles', 'clientDetails', 'control'));
+        return view('clients.show', compact('clientDetails',
+        'liaisonDetails',
+        'emptyProfiles',
+        'clientDetails',
+        'emptyBoard',
+        'control',
+        'boardDetails'));
     }
 
     public function edit($id)

@@ -73,4 +73,9 @@ public function surveys()
     return $this->hasMany(survey::class, 'client_id', 'id');
 }
 
+public function members()
+{
+    return $this->hasMany(members::class, 'client_id', 'id');
+}
+
 }

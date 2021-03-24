@@ -106,51 +106,6 @@
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="bg-purple-500 px-4 py-5 sm:px-6">
                             <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
-                              Board Member Details
-                            </h3>
-                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
-                              Please complete using TMO board information only
-                            </p>
-                        </div>
-
-                        <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="client_chair" class="block font-medium text-sm text-gray-700">Board Chair</label>
-                            <input type="text" name="client_chair" id="client_chair" value="{{ old('client_chair') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
-                            @error('client_chair')
-                                <p class="text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="client_chair_email" class="block font-medium text-sm text-gray-700">Chair's Email</label>
-                            <input type="email" name="client_chair_email" id="client_chair_email" value="{{ old('client_chair_email') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
-                            @error('client_chair_email')
-                                <p class="text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="client_chair_contact" class="block font-medium text-sm text-gray-700">Chair's Contact No</label>
-                            <input type="number" name="client_chair_contact" id="client_chair_contact" value="{{ old('client_chair_contact') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
-                            @error('client_chair_contact')
-                                <p class="text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="client_secretary" class="block font-medium text-sm text-gray-700">Board Secretary</label>
-                            <input type="text" name="client_secretary" id="client_secretary" value="{{ old('client_secretary') }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
-                            @error('client_secretary')
-                                <p class="text-sm text-red-600">{{ $message }}</p>
-                            @enderror
-                            <br>
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="shadow overflow-hidden sm:rounded-md">
-                        <div class="bg-purple-500 px-4 py-5 sm:px-6">
-                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                             Assign Liaison Officer
                             </h3>
                             <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">

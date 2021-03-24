@@ -257,6 +257,78 @@
 
              <br>
 
+             @if (count($emptyBoard) > 0)
+             <div class="shadow overflow-hidden sm:rounded-md">
+                <div class="shadow overflow-hidden sm:rounded-md">
+                   <div class="bg-red-500 px-4 py-5 sm:px-6">
+                      <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
+                         Board Profile
+                      </h3>
+                      <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
+                         This relates to elected members on the TMO board
+                      </p>
+                   </div>
+
+                   <div class="border-t border-gray-200">
+                      <div class="shadow overflow-hidden border-b border-gray-200">
+                         <section class="w-full bg-gradient-to-b from-gray-100 to-white">
+                            <div class="w-full px-4 py-10 mx-auto text-left md:text-center md:w-3/4 lg:w-2/4">
+                               <h2 class="mb-6 font-extrabold tracking-tight md:text-1xl md:mb-6 md:leading-tight">
+                                  This TMO does not have any registered board members. Please click below to create an board profile. Please do not ignore this warning !
+                               </h2>
+                               <div class="mb-0 space-x-0 md:space-x-2">
+                                  <a href="/members/create/{{$clientDetails->id}}" class="inline-block rounded-full text-white
+                                  bg-gray-600 hover:bg-purple-600 duration-300
+                                  text-xs font-bold
+                                  mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1
+                                  opacity-90 hover:opacity-100">Add Members</a>
+                               </div>
+                            </div>
+                         </section>
+                      </div>
+                   </div>
+
+                </div>
+             </div>
+
+                <br>
+
+                @elseif(count($boardDetails) < 1)
+                <div class="shadow overflow-hidden sm:rounded-md">
+                    <div class="shadow overflow-hidden sm:rounded-md">
+                       <div class="bg-red-500 px-4 py-5 sm:px-6">
+                          <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
+                             Board Profile
+                          </h3>
+                          <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
+                             This relates to elected members on the TMO board
+                          </p>
+                       </div>
+
+                       <div class="border-t border-gray-200">
+                          <div class="shadow overflow-hidden border-b border-gray-200">
+                             <section class="w-full bg-gradient-to-b from-gray-100 to-white">
+                                <div class="w-full px-4 py-10 mx-auto text-left md:text-center md:w-3/4 lg:w-2/4">
+                                   <h2 class="mb-6 font-extrabold tracking-tight md:text-1xl md:mb-6 md:leading-tight">
+                                      Opps, All elected positions on the board have expired. Please provide the names of the new elected board members. Please do not ignore this warning !
+                                   </h2>
+                                   <div class="mb-0 space-x-0 md:space-x-2">
+                                      <a href="/members/create/{{$clientDetails->id}}" class="inline-block rounded-full text-white
+                                      bg-gray-600 hover:bg-purple-600 duration-300
+                                      text-xs font-bold
+                                      mr-1 md:mr-2 mb-2 px-2 md:px-4 py-1
+                                      opacity-90 hover:opacity-100">Add Members</a>
+                                   </div>
+                                </div>
+                             </section>
+                          </div>
+                       </div>
+
+                    </div>
+                 </div>
+
+                    <br>
+                @else
              <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
                    <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-gray-900">
@@ -272,33 +344,71 @@
                          <dt class="text-sm font-medium text-gray-500">
                             Board Chair
                          </dt>
+                         @foreach($boardDetails as $member)
+                         @if($member->position == 'Board Chair')
                          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_chair}}
+                            {{ $member->elected_name }}
                          </dd>
+                         <dt class="text-sm font-medium text-gray-500">
+                        </dt>
+                         <dd class="mt-1 text-xs text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $member->elected_email}}
+                         </dd>
+                         <dt class="text-sm font-medium text-gray-500">
+                        </dt>
+                         <dd class="mt-1 text-xs text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $member->elected_contact}}
+                         </dd>
+                         @endif
+                        @endforeach
                       </div>
                       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                          <dt class="text-sm font-medium text-gray-500">
-                            Contact details
+                            Vice Chair
                          </dt>
+                         @foreach($boardDetails as $member)
+                         @if($member->position == 'Vice Chair')
                          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_chair_email}}
+                            {{ $member->elected_name }}
                          </dd>
                          <dt class="text-sm font-medium text-gray-500">
-                         </dt>
+                        </dt>
                          <dd class="mt-1 text-xs text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_chair_contact}}
+                            {{ $member->elected_email}}
                          </dd>
+                         <dt class="text-sm font-medium text-gray-500">
+                        </dt>
+                         <dd class="mt-1 text-xs text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $member->elected_contact}}
+                         </dd>
+                         @endif
+                        @endforeach
                       </div>
                       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                          <dt class="text-sm font-medium text-gray-500">
                             Board Secretary
                          </dt>
+                         @foreach($boardDetails as $member)
+                         @if($member->position == 'Board Secretary')
                          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_secretary}}
+                            {{ $member->elected_name }}
                          </dd>
+                         <dt class="text-sm font-medium text-gray-500">
+                        </dt>
+                         <dd class="mt-1 text-xs text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $member->elected_email}}
+                         </dd>
+                         <dt class="text-sm font-medium text-gray-500">
+                        </dt>
+                         <dd class="mt-1 text-xs text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $member->elected_contact}}
+                         </dd>
+                         @endif
+                        @endforeach
                       </div>
                    </dl>
                 </div>
              </div>
+             @endif
           </div>
  </x-app-layout>
