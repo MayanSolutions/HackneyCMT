@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth', 'checkuserstatus']], function () {
     Route::resource('reviewslist', \App\Http\Controllers\ReviewHomeController::class);
     Route::get('/members/create/{id}', [\App\Http\Controllers\MembersController::class, 'create']);
     Route::post('/members/{clients}', [\App\Http\Controllers\MembersController::class, 'store'])->name('members.custom.store');
+    Route::get('/members/show/{id}', [\App\Http\Controllers\MembersController::class, 'show']);
     Route::resource('members', \App\Http\Controllers\MembersController::class);
 
     // digital review controllers

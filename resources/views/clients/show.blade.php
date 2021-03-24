@@ -329,12 +329,12 @@
 
                     <br>
                 @else
-             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+             <div class="bg-purple-500 shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
-                   <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-gray-900">
+                   <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                       Board Member Details
                    </h3>
-                   <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-gray-600">
+                   <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
                       Information relating senior board members
                    </p>
                 </div>
@@ -407,6 +407,11 @@
                         @endforeach
                       </div>
                    </dl>
+                </div>
+                <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
+                    <a href="{{('/members/show/'.$clientDetails->id)}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                        Manage Members
+                    </a>
                 </div>
              </div>
              @endif

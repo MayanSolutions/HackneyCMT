@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Create Profile
+            Create Board Profile
         </h2>
     </x-slot>
 
@@ -24,7 +24,17 @@
                             </p>
                         </div>
                     </div>
+                    <br>
+
                     <div class="shadow overflow-hidden sm:rounded-md">
+                        <div class="bg-purple-500 px-4 py-5 sm:px-6">
+                            <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
+                               Board Profile
+                            </h3>
+                            <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
+                               This relates to elected members on the TMO board
+                            </p>
+                         </div>
                         <table id="dynamicTable" class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>

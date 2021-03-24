@@ -12,6 +12,8 @@ class Members extends Model
     use HasFactory;
     use LogsActivity;
 
+    protected $dates = ['agm_date', 'position_exp_date'];
+
     protected $fillable = [
         'agm_date',
         'elected_name',

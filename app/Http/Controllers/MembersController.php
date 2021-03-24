@@ -58,23 +58,52 @@ class MembersController extends Controller
             }
         }
 
-    public function show(Members $members)
+    public function show($id, Members $members)
     {
-        //
+        $filterClient = clients::where('id', $id)->first();
+        $boardDetails = members::where('client_id', $id)->where('position_exp_date', '>=', Carbon::now())->get();
+        $formerMembers = members::where('client_id', $id)->where('position_exp_date', '<=', Carbon::now())->get();
+        return view('members.show', compact('filterClient', 'boardDetails', 'formerMembers'));
     }
 
-    public function edit(Members $members)
+    public function edit($id)
     {
-        //
+        $members = Members::where('id', $id)->first();
+        $client = clients::where('id', $members->client_id)->first();
+
+        return view('members.edit', compact('members', 'client'));
     }
 
-    public function update(Request $request, Members $members)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'agm_date' => 'required',
+            'elected_name' => 'required',
+            'position' => 'required',
+            'elected_email' => 'email',
+            'position_exp_date' => 'required',
+            ]);
+
+            $member = Members::where('id', $id)->first();
+            $member->update([
+                'agm_date' => $request->input('agm_date'),
+                'elected_name' => $request->input('elected_name'),
+                'position' => $request->input('position'),
+                'elected_contact' => $request->input('elected_contact'),
+                'elected_email' => $request->input('elected_email'),
+                'position_exp_date' => $request->input('position_exp_date'),
+                ]);
+
+            return redirect('/members/show/'.$member->client_id)->withSuccessMessage('Board member updated');
+
     }
 
-    public function destroy(Members $members)
+
+    public function destroy($id)
     {
-        //
+        $member = Members::find($id);
+        $member->delete();
+
+        return back()->withSuccessMessage('Board member deleted');
     }
 }
