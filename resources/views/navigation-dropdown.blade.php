@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{url('/images/MayanSoftwareSolutionsIcon.png')}}" alt="Logo" style="height: 95px; width: 95px;"></a>
+                        <img src="{{url('/images/MayanSoftwareSolutionsIcon.png')}}" alt="Logo" style="height: 95px; width: 95px;">
                     </a>
                 </div>
 
