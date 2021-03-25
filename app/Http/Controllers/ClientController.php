@@ -138,8 +138,6 @@ class ClientController extends Controller
             'client_manager_contact' => 'required|string|min:11|numeric',
             'client_manager_email' => 'required',
             'client_deputy' => 'required',
-            'client_chair' => 'required',
-            'client_secretary' => 'required',
             ]);
 
             $clients = clients::where('id', $id)->first();
@@ -152,10 +150,6 @@ class ClientController extends Controller
                 'client_manager_contact' => $request->input('client_manager_contact'),
                 'client_manager_email' => $request->input('client_manager_email'),
                 'client_deputy' => $request->input('client_deputy'),
-                'client_chair' => $request->input('client_chair'),
-                'client_chair_contact' => $request->input('client_chair_contact'),
-                'client_chair_email' => $request->input('client_chair_email'),
-                'client_secretary' => $request->input('client_secretary'),
                 'user_id' => $request->input('liaison_officer'),
                 ]);
 
