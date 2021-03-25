@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="elected_email" class="block font-medium text-sm text-gray-700">Contact No</label>
+                            <label for="elected_email" class="block font-medium text-sm text-gray-700">Email</label>
                             <input type="email" name="elected_email" value="{{ $members->elected_email }}" id="elected_email" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('elected_email')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
@@ -79,19 +79,19 @@
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="bg-red-500 px-4 py-5 sm:px-6">
                             <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
-                                Expire {{ $members->elected_name}}
+                                Position Expiry
                             </h3>
                             <p class="mb-1 mt-1 ml-1 max-w-2xl text-sm text-white">
                              To expire a board member is to remove them from the position.
                             </p>
                             <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
-                            The below date is the last scheduled serving date before AGM elections. Only update if the board member has left the board
+                            The below date is the last scheduled serving date before the next AGM election. Only ammend on resignation of their position.
                             </p>
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="position_exp_date" class="block font-medium text-sm text-gray-700">Expiry Date</label>
-                            <input type="date" name="position_exp_date" value="{{ $members->position_exp_date->format('Y-m-d')}}" id="agm_date" class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="date" name="position_exp_date" value="{{ $members->position_exp_date->format('Y-m-d')}}" id="agm_date" class="form-input rounded-md shadow-sm mt-1 block w-full expire-member" />
                             @error('position_exp_date')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror

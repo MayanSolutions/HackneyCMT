@@ -83,4 +83,24 @@
     })
     </script>
 
+<script>
+    $('.expire-member').change(function(event) {
+        event.preventDefault();
+        var form =  $(this).closest("form");
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Amending the position expiry date could remove the member from the position",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, I understand'
+            }).then((result) => {
+    if (result.value) {
+    form.submit();
+    }
+    })
+    })
+    </script>
+
 

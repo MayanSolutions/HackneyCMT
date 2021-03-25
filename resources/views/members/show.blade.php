@@ -27,7 +27,7 @@
                       Board Profile
                    </h3>
                    <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
-                      Elected board member who are currently on the board
+                      Elected board member who are curre on the board
                    </p>
                 </div>
                 <div class="px-1 py-4 mx-auto sm:max-w-xl bg-white md:max-w-full lg:max-w-screen-xl md:px-6 lg:px-2 lg:py-5">
@@ -148,7 +148,7 @@
                                <div class="flex items-center">
                                   <div class="">
                                      <div class="text-sm font-medium text-gray-900">
-                                        {{ $formerMember->agm_date }}
+                                        {{ date('d-m-y', strtotime($formerMember->agm_date)) }}
                                      </div>
                                   </div>
                                </div>
@@ -157,7 +157,7 @@
                                <div class="flex items-center">
                                   <div class="">
                                      <div class="text-sm font-medium text-gray-900">
-                                        {{ $formerMember->position_exp_date }}
+                                        {{ date('d-m-y', strtotime($formerMember->position_exp_date)) }}
                                      </div>
                                   </div>
                                </div>

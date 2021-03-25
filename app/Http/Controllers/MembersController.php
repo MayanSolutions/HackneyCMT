@@ -80,7 +80,6 @@ class MembersController extends Controller
             'agm_date' => 'required',
             'elected_name' => 'required',
             'position' => 'required',
-            'elected_email' => 'email',
             'position_exp_date' => 'required',
             ]);
 
