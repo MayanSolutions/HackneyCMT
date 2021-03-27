@@ -48,17 +48,14 @@
         @stack('modals')
         @livewireScripts
     </body>
-    <footer class="px-4 py-12 mx-auto max-w-8xl">
-        <div class="grid grid-cols-2 gap-10 mb-3 md:grid-cols-3 lg:grid-cols-11 lg:gap-20">
-          <div class="col-span-3">
-            <a href="#" title="" class="flex items-center">
-                <img src="{{url('/images/MayanSoftwareSolutionsLogo.png')}}" alt="Logo" style="height: 65px; width: 65px;">
-            </a>
-          </div>
-        </div>
-        <div class="flex flex-col items-start justify-between pt-2 mt-2 border-t border-gray-100 md:flex-row md:items-center">
-          <p class="mb-2 text-xs text-left text-gray-600 md:mb-0">Built by Mayan Software Solutions</p>
-          <p class="mb-0 text-xs text-left text-gray-600 md:mb-0">Copyright &copy; 2021 MayanSolutions</p>
+    <footer class="text-gray-600 body-font">
+        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+          <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                <img src="{{url('/images/MayanSoftwareSolutionsLogo.png')}}" alt="Logo" style="height: 70px; width: 70px;">
+          </a>
+          <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2021 Mayan Software Solutions —
+            <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@Hackney</a>
+          </p>
         </div>
       </footer>
 </html>

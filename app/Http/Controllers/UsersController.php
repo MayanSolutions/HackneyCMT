@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\clients;
+use App\Notifications\UsersChangeNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\WelcomeEmailNotification;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class UsersController extends Controller
             }]
         ])
         ->orderBy('id', 'desc')
-        ->paginate(10);
+        ->paginate(6);
 
         return view('users.index', compact('users'));
     }
@@ -53,7 +54,7 @@ class UsersController extends Controller
 
         $user->roles()->sync($request->input('roles', []));
 
-        Notification::send($user, new WelcomeEmailNotification);
+        Notification::send($user, new WelcomeEmailNotification($user));
 
         return redirect()->route('users.index')->withSuccessMessage('Account created');
     }
@@ -82,6 +83,8 @@ class UsersController extends Controller
     {
         $user->update($request->validated());
         $user->roles()->sync($request->input('roles', []));
+
+        Notification::send($user, new UsersChangeNotification($user));
 
         return redirect()->route('users.index')->withSuccessMessage('Account updated');
     }

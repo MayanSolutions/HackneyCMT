@@ -11,51 +11,35 @@ class WelcomeEmailNotification extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $user;
+
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
+
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Welcome to Mayan Solutions, our TMO management platform. An account has been created for you and your account information should be provided to you shortly')
-                    ->line('Please ensure you change your password when you first login. This can be done by accessing My Profile.')
+                    ->line('Welcome '.$this->user->name)
+                    ->line('This is our TMO management digital platform, the smart client management solution.')
+                    ->line('An account has been created for you which can be accessed via the below link. Your login credential will be sent to you by an administrator shortly.')
+                    ->line('Please ensure you change your password when you first login which can be done by clicking the user icon and selecting My Profile.')
                     ->action('My Account', url('/login'));
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function toArray($notifiable)
     {
-        return [
-            //
+        return
+        [
+            'notify' => ['Welcome '.$this->user->name]
         ];
     }
+
 }

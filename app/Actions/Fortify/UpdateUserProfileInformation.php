@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
+use App\Notifications\UsersChangeNotification;
+use Illuminate\Support\Facades\Notification;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
@@ -42,6 +44,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 // 'department' => $input['department'],
                 // 'organisation' => $input['organisation'],
             ])->save();
+            Notification::send($user, new UsersChangeNotification);
         }
     }
 

@@ -5,6 +5,8 @@ namespace App\Actions\Fortify;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\UpdatesUserPasswords;
+use App\Notifications\UsersChangeNotification;
+use Illuminate\Support\Facades\Notification;
 
 class UpdateUserPassword implements UpdatesUserPasswords
 {
@@ -31,5 +33,6 @@ class UpdateUserPassword implements UpdatesUserPasswords
         $user->forceFill([
             'password' => ($input['password']),
         ])->save();
+        Notification::send($user, new UsersChangeNotification);
     }
 }
