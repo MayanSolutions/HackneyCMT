@@ -10,6 +10,9 @@
                 <p class="text-gray-400 text-xs">
                     {{ $user->job_title}}
                 </p>
+                <p class="text-gray-400 text-xs">
+                    {{ $user->organisation}}
+                </p>
             </div>
             <div class="rounded-lg bg-blue-100 dark:bg-white p-2 w-full">
                 <div class="flex items-center justify-between text-xs text-gray-400 dark:text-black">
