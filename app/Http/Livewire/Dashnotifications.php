@@ -11,9 +11,6 @@ class Dashnotifications extends Component
 {
     use WithPagination;
 
-    public $notifications;
-    public $countNotifications;
-
     protected $listener = ['read' => '$refresh'];
 
     public function read()
@@ -22,18 +19,10 @@ class Dashnotifications extends Component
         $notifications->markAsRead();
     }
 
-    public function mount()
-    {
-        $userCountNotifications = auth()->user()->unreadNotifications->count();
-        $this->countNotifications = $userCountNotifications;
-        $userNotifications = auth()->user()->unreadNotifications;
-
-        $this->notifications = $userNotifications;
-    }
-
     public function render()
     {
-
-        return view('livewire.dashnotifications');
+        return view('livewire.dashnotifications',
+        ['notifications'=>auth()->user()->unreadNotifications()->paginate(5)],
+        ['countNotifications'=>Auth::user()->unreadNotifications()->count()]);
     }
 }

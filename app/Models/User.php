@@ -37,6 +37,10 @@ class User extends Authenticatable
 
     protected static $submitEmptyLogs = false;
 
+    protected $dates = [
+        'last_login'
+    ];
+
 
     protected static $logAttributes = [
         'name',
