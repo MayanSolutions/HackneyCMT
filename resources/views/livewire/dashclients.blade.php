@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    @if(count($client) > 0)
+    @if(count($clients) > 0)
     <div class="container w-full items-center">
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
