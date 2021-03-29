@@ -14,6 +14,6 @@ class Dashclients extends Component
     public function render()
     {
         return view('livewire.dashclients',
-    ['clients'=>clients::with('members')->with('EstateDetails')->where('user_id', auth()->user()->id )->paginate(3)]);
+    ['clients'=>clients::with('members')->where('user_id', auth()->user()->id )->paginate(3)]);
     }
 }
