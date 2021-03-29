@@ -45,8 +45,6 @@ Route::group(['middleware' => ['auth', 'checkuserstatus']], function () {
     Route::get('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'show']);
     Route::post('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'store']);
 
-    //livewire Dashboard routes
-
 });
 
 

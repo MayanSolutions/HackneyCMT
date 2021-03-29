@@ -165,98 +165,6 @@
              @endif
              <br>
 
-             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-                <div class="px-4 py-5 sm:px-6">
-                   <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-gray-900">
-                      TMO Details
-                   </h3>
-                   <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-gray-600">
-                      Information relating to the organisation
-                   </p>
-                </div>
-                <div class="border-t border-gray-200">
-                   <dl>
-                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                         <dt class="text-sm font-medium text-gray-500">
-                            Organisation
-                         </dt>
-                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_organisation}}
-                         </dd>
-                      </div>
-                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                         <dt class="text-sm font-medium text-gray-500">
-                            Office address
-                         </dt>
-                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_address}}
-                         </dd>
-                      </div>
-                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                         <dt class="text-sm font-medium text-gray-500">
-                            Contact details
-                         </dt>
-                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_pfn_email}}
-                         </dd>
-                         <dt class="text-sm font-medium text-gray-500">
-                         </dt>
-                         <dd class="mt-1 text-xs text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_pfn}}
-                         </dd>
-                      </div>
-                   </dl>
-                </div>
-             </div>
-
-             <br>
-
-             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-                <div class="px-4 py-5 sm:px-6">
-                   <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-gray-900">
-                      Management Details
-                   </h3>
-                   <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-gray-600">
-                      Information relating the organisation's management
-                   </p>
-                </div>
-                <div class="border-t border-gray-200">
-                   <dl>
-                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                         <dt class="text-sm font-medium text-gray-500">
-                            Office Manager
-                         </dt>
-                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_manager}}
-                         </dd>
-                      </div>
-                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                         <dt class="text-sm font-medium text-gray-500">
-                            Contact details
-                         </dt>
-                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_manager_email}}
-                         </dd>
-                         <dt class="text-sm font-medium text-gray-500">
-                         </dt>
-                         <dd class="mt-1 text-xs text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_manager_contact}}
-                         </dd>
-                      </div>
-                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                         <dt class="text-sm font-medium text-gray-500">
-                            Deputising Officer
-                         </dt>
-                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            {{ $clientDetails->client_deputy}}
-                         </dd>
-                      </div>
-                   </dl>
-                </div>
-             </div>
-
-             <br>
-
              @if (count($emptyBoard) > 0)
              <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="shadow overflow-hidden sm:rounded-md">
@@ -415,5 +323,96 @@
                 </div>
              </div>
              @endif
+             <br>
+
+             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                <div class="px-4 py-5 sm:px-6">
+                   <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-gray-900">
+                      TMO Details
+                   </h3>
+                   <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-gray-600">
+                      Information relating to the organisation
+                   </p>
+                </div>
+                <div class="border-t border-gray-200">
+                   <dl>
+                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                         <dt class="text-sm font-medium text-gray-500">
+                            Organisation
+                         </dt>
+                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $clientDetails->client_organisation}}
+                         </dd>
+                      </div>
+                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                         <dt class="text-sm font-medium text-gray-500">
+                            Office address
+                         </dt>
+                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $clientDetails->client_address}}
+                         </dd>
+                      </div>
+                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                         <dt class="text-sm font-medium text-gray-500">
+                            Contact details
+                         </dt>
+                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $clientDetails->client_pfn_email}}
+                         </dd>
+                         <dt class="text-sm font-medium text-gray-500">
+                         </dt>
+                         <dd class="mt-1 text-xs text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $clientDetails->client_pfn}}
+                         </dd>
+                      </div>
+                   </dl>
+                </div>
+             </div>
+
+             <br>
+
+             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                <div class="px-4 py-5 sm:px-6">
+                   <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-gray-900">
+                      Management Details
+                   </h3>
+                   <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-gray-600">
+                      Information relating the organisation's management
+                   </p>
+                </div>
+                <div class="border-t border-gray-200">
+                   <dl>
+                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                         <dt class="text-sm font-medium text-gray-500">
+                            Office Manager
+                         </dt>
+                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $clientDetails->client_manager}}
+                         </dd>
+                      </div>
+                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                         <dt class="text-sm font-medium text-gray-500">
+                            Contact details
+                         </dt>
+                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $clientDetails->client_manager_email}}
+                         </dd>
+                         <dt class="text-sm font-medium text-gray-500">
+                         </dt>
+                         <dd class="mt-1 text-xs text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $clientDetails->client_manager_contact}}
+                         </dd>
+                      </div>
+                      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                         <dt class="text-sm font-medium text-gray-500">
+                            Deputising Officer
+                         </dt>
+                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ $clientDetails->client_deputy}}
+                         </dd>
+                      </div>
+                   </dl>
+                </div>
+             </div>
           </div>
  </x-app-layout>
