@@ -1,5 +1,8 @@
 <div>
     <div class="shadow-lg rounded-2xl w-full p-2 bg-white dark:bg-gray-800">
+        <p class="font-bold text-md p-2 border-b mb-1 border-gray-200 text-black dark:text-white">
+            My Account
+        </p>
         <div class="flex flex-row items-start gap-4">
             <img src="{{ $user->profile_photo_url }}" alt="" class="w-28 h-28 rounded-lg"/>
 
@@ -16,7 +19,7 @@
                         {{ $user->department}}
                     </p>
                     <div class="flex items-center justify-between gap-4 mt-1">
-                        <a href="{{ route('profile.show') }}"  class="inline-flex font-bold bg-purple-500 hover:bg-purple-600 text-white hover:text-white text-xs font-semibold py-1 px-2 rounded shadow">My Profile</a>
+                        <a href="{{ route('profile.show') }}"  class="inline-flex font-bold bg-purple-600 hover:bg-teal-400 text-white hover:text-white text-xs font-semibold py-1 px-2 rounded shadow">My Profile</a>
                     </div>
                 </div>
 

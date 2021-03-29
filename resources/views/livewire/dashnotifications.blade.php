@@ -1,11 +1,11 @@
 <div>
     <div class="container w-full items-center">
 
-        <div class="mb-4 mr-4 shadow-lg rounded-2xl bg-white dark:bg-gray-700 items-center">
-            <p class="font-bold text-md p-4 text-black dark:text-white">
+        <div class="shadow-lg rounded-2xl w-full p-2 bg-white dark:bg-gray-800">
+            <p class="font-bold text-md p-2 border-b mb-1 border-gray-200 text-black dark:text-white">
                 My Notifications
             </p>
-            <span class="ml-3 font-bold text-md underline p-4 text-xs text-teal-500 dark:text-gray-300 dark:text-white">
+            <span class="font-bold text-md mt-2 underline p-2 text-xs text-teal-500 dark:text-gray-300 dark:text-white">
                 @if($countNotifications > 0)
                 {{ $countNotifications }} recent Notifications
                 @else
