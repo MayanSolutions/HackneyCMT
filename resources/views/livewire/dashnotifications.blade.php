@@ -15,7 +15,7 @@
             <button class="float-right text-xs outline-none focus:outline-none" wire:click="read"><x-heroicon-o-x-circle class="mr-3 w-5 h-5 text-red-500"/></button>
             <ul>
                 @forelse($notifications as $notification)
-                <li class="flex items-center text-gray-600 dark:text-gray-200 justify-between py-3 border-b-2 border-gray-100 dark:border-gray-800">
+                <li class="flex items-center text-gray-600 dark:text-gray-200 justify-between py-3 dark:border-gray-800">
                     <div class="flex items-center justify-start text-sm">
                         <span class="font-bold text-md p-4 text-xs text-grey-500 dark:text-gray-300 dark:text-white ml-2">
                             <x-heroicon-o-mail class="w-4 h-4 text-teal-500"/>
@@ -31,7 +31,7 @@
                     </span>
                 </li>
                 @empty
-                <li class="flex items-center text-gray-600 dark:text-gray-200 justify-between py-3 border-b-2 border-gray-100 dark:border-gray-800">
+                <li class="flex items-center text-gray-600 dark:text-gray-200 justify-between py-3 dark:border-gray-800">
                     <div class="flex items-center justify-start text-sm">
                         <span class="font-bold text-md p-4 text-xs text-grey-500 dark:text-gray-300 dark:text-white ml-2">
                             <x-heroicon-o-thumb-up class="w-5 h-5 text-teal-500"/>
