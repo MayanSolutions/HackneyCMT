@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\clients;
+use App\Models\DashOrder;
 use App\Notifications\UsersChangeNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\WelcomeEmailNotification;
@@ -44,7 +45,6 @@ class UsersController extends Controller
 
         $roles = Role::pluck('title', 'id');
 
-
         return view('users.create', compact('roles'));
     }
 
@@ -53,6 +53,11 @@ class UsersController extends Controller
         $user = User::create($request->validated());
 
         $user->roles()->sync($request->input('roles', []));
+
+        $generateDash = DashOrder::insert([
+            ['user_id' => $user->id,'component_call' => 'dashprofile', 'position' => 1],
+            ['user_id' => $user->id,'component_call' => 'dashnotifications', 'position' => 2]
+        ]);
 
         Notification::send($user, new WelcomeEmailNotification($user));
 

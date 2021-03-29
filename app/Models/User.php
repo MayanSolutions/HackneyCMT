@@ -118,6 +118,11 @@ class User extends Authenticatable
         return $this->hasMany(clients::class);
     }
 
+    public function dashOrders()
+    {
+        $this->hasMany(DashOrder::class);
+    }
+
     public function setPasswordAttribute($password)
     {
         if (trim($password) === '') {
