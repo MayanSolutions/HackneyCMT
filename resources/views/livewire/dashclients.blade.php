@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-
+    @if(count($client) > 0)
     <div class="container w-full items-center">
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -88,5 +88,10 @@
             </div>
           </div>
     </div>
+    @else
+    <p class="font-bold text-md p-2 border-b mb-3 border-gray-200 text-black dark:text-white">
+        You have no client assigned to you
+    </p>
+    @endif
 
 </div>
