@@ -44,6 +44,7 @@
                 @endforelse
             </ul>
         </div>
+        <br>
         {{ $notifications->links() }}
     </div>
 </div>
