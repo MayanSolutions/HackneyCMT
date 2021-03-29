@@ -89,7 +89,7 @@
           </div>
     </div>
     @else
-    <p class="font-bold text-md p-2 border-b mb-3 border-gray-200 text-black dark:text-white">
+    <p class="font-bold text-md p-2 border-b mb-3border-gray-200 text-black dark:text-white">
         You have no client assigned to you
     </p>
     @endif
