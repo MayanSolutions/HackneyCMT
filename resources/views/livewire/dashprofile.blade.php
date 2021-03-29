@@ -16,7 +16,7 @@
                         {{ $user->department}}
                     </p>
                     <div class="flex items-center justify-between gap-4 mt-1">
-                        <a href="{{ route('profile.show') }}"  class="inline-flex bg-purple-500 hover:bg-purple-600 text-white hover:text-white text-xs font-semibold py-1 px-2 rounded shadow">My Profile</a>
+                        <a href="{{ route('profile.show') }}"  class="inline-flex font-bold bg-purple-500 hover:bg-purple-600 text-white hover:text-white text-xs font-semibold py-1 px-2 rounded shadow">My Profile</a>
                     </div>
                 </div>
 
