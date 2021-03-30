@@ -11,9 +11,17 @@ class Dashclients extends Component
 {
     use WithPagination;
 
+    public $clients;
+
+    public function mount()
+    {
+        $loggedInUser = Auth::user()->id;
+        $getclients = clients::where('user_id', $loggedInUser)->with('members')->get();
+        $this->clients = $getclients;
+    }
+
     public function render()
     {
-        return view('livewire.dashclients',
-    ['clients'=>clients::with('members')->where('user_id', auth()->user()->id )->paginate(3)]);
+        return view('livewire.dashclients');
     }
 }

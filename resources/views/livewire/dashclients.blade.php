@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    @if(count($clients) > 0)
+    @if($clients != Null)
     <div class="container w-full items-center">
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -61,15 +61,11 @@
                           <div class="text-sm text-gray-500">{{ $client->client_deputy }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            @if(count($client->members) > 0)
-                          <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            Elected
-                          </span>
-                          @else
-                          <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-600">
-                            No Board
-                          </span>
-                          @endif
+                            @if($client->members != Null)
+                            Board Elected
+                            @else
+                            No board registered
+                            @endif
                         </td>
                         <td class="px-2 py-1 whitespace-nowrap text-sm text-gray-500">
                             @can('client_access')
