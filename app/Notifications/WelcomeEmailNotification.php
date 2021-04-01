@@ -23,7 +23,6 @@ class WelcomeEmailNotification extends Notification
         return ['mail', 'database'];
     }
 
-
     public function toMail($notifiable)
     {
         return (new MailMessage)

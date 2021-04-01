@@ -33,6 +33,5 @@ class UpdateUserPassword implements UpdatesUserPasswords
         $user->forceFill([
             'password' => ($input['password']),
         ])->save();
-        Notification::send($user, new UsersChangeNotification);
     }
 }

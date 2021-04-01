@@ -6,15 +6,17 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\User;
 
 class UsersChangeNotification extends Notification
 {
     use Queueable;
 
+    private $user;
 
-    public function __construct()
+    public function __construct($user)
     {
-
+        $this->user = $user;
     }
 
     public function via($notifiable)
@@ -25,18 +27,13 @@ class UsersChangeNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                ->line('There has been changes made to your user account')
-                ->line('This may have been done by you, or by the system administrator, however please check to make sure that all updated information is correct')
-                ->line('If you are unable to login. please contact your system administrator')
-                ->action('My Account', url('/login'));
+                ->line('Hello '.$this->user->name)
+                ->line('Some changes have been made to your Mayan account')
+                ->line('This may have been done by you or by the system administrator, however, its advised you login to check if the updated information is correct')
+                ->line('If you are unable to login. please contact your system administrator immediately')
+                ->action('Login', url('/'));
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function toArray($notifiable)
     {
         return

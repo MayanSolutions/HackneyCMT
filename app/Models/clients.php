@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\MatrixFunction;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 class clients extends Model
 {
     use HasFactory;
+    use Notifiable;
     use LogsActivity;
 
     protected $fillable = [
@@ -59,23 +61,28 @@ class clients extends Model
     ];
 
     public function functions()
-{
-    return $this->belongsToMany(MatrixFunction::class, 'clients_matrix_function', 'client_id', 'function_id');
-}
+    {
+        return $this->belongsToMany(MatrixFunction::class, 'clients_matrix_function', 'client_id', 'function_id');
+    }
 
-public function EstateDetails()
-{
-    return $this->belongsTo(EstateDetail::class, 'id', 'client_id');
-}
+    public function EstateDetails()
+    {
+        return $this->belongsTo(EstateDetail::class, 'id', 'client_id');
+    }
 
-public function surveys()
-{
-    return $this->hasMany(survey::class, 'client_id', 'id');
-}
+    public function surveys()
+    {
+        return $this->hasMany(survey::class, 'client_id', 'id');
+    }
 
-public function members()
-{
-    return $this->hasMany(members::class, 'client_id', 'id');
-}
+    public function members()
+    {
+        return $this->hasMany(members::class, 'client_id', 'id');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

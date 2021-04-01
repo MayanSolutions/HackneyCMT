@@ -54,13 +54,6 @@ class UsersController extends Controller
 
         $user->roles()->sync($request->input('roles', []));
 
-        $generateDash = DashOrder::insert([
-            ['user_id' => $user->id,'component_call' => 'dashprofile', 'position' => 1],
-            ['user_id' => $user->id,'component_call' => 'dashnotifications', 'position' => 2]
-        ]);
-
-        Notification::send($user, new WelcomeEmailNotification($user));
-
         return redirect()->route('users.index')->withSuccessMessage('Account created');
     }
 
@@ -86,10 +79,10 @@ class UsersController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->validated());
-        $user->roles()->sync($request->input('roles', []));
 
-        Notification::send($user, new UsersChangeNotification($user));
+        $user->update($request->validated());
+
+        $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('users.index')->withSuccessMessage('Account updated');
     }

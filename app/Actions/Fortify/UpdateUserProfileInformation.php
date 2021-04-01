@@ -44,7 +44,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 // 'department' => $input['department'],
                 // 'organisation' => $input['organisation'],
             ])->save();
-            Notification::send($user, new UsersChangeNotification);
         }
     }
 
