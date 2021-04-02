@@ -20,11 +20,16 @@
                             <x-heroicon-o-mail class="w-5 h-5 text-teal-500"/>
                         </span>
                         @foreach($notification->data['notify'] as $messages)
-                        <span class="font-bold text-md p-2 text-sm text-black dark:text-gray-300 dark:text-white ml-1">
+                        <span class="font-bold text-md p-2 text-xs text-black dark:text-gray-300 dark:text-white ml-1">
                             {{ $messages }}
                         </span>
                         @endforeach
                     </div>
+                    @foreach($notification->data['url'] as $link)
+                    <span class="font-bold text-md p-2 text-xs text-black dark:text-gray-300 dark:text-white ml-1">
+                        <a href="{{ $link }}"  class="inline-flex font-bold bg-white text-gray-800 hover:bg-teal-600 text-white hover:text-white text-xs font-semibold py-1 px-2 rounded shadow">View</a>
+                    </span>
+                    @endforeach
                     <span class="font-bold text-md p-2 mr-4 text-xs text-teal-500 dark:text-gray-300 dark:text-white ml-1">
                         {{ $notification->created_at->diffForHumans() }}
                     </span>

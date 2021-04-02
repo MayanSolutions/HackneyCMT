@@ -17,6 +17,14 @@ class UserObserver
 
     public function updated(User $user)
     {
+        if($user->isDirty(['last_login', 'last_login_ip'])){
+            return
+            [
+                'last_login' == false,
+                'last_login_ip' == false
+            ];
+        }
+
         $user->notify(new UsersChangeNotification($user));
     }
 

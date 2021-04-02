@@ -6,10 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Models\User;
+use App\Models\clients;
 
 class ClientCreatedNotification extends Notification
 {
     use Queueable;
+
+    private $user;
+    private $clients;
+
+    public function __construct($user, $clients)
+    {
+        $this->user = $user;
+        $this->clients = $clients;
+
+    }
 
     public function via($notifiable)
     {
@@ -19,15 +31,17 @@ class ClientCreatedNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('A new TMO Profile has been created')
-                    ->line('To view this TMO registration, please click on the link below to access the TMO Profile')
-                    ->action('Notification Action', url('/clients'));
-                    }
+                    ->line($this->user->name)
+                    ->line('A new TMO '. $this->clients->client_organisation .' has been created on the system')
+                    ->line('You have recieved this notification because you are either an adminstrator or you have been assigned as the liaision officer responsible for this TMO')
+                    ->action('View TMO', url('/clients/'. $this->clients->id));
+    }
 
     public function toArray($notifiable)
     {
         return [
-            'notify' => ['A new TMO has been added to the system']
+            'notify' => ['The organisation, '. $this->clients->client_organisation.' has been created on the system and assigned to you'],
+            'url' => ['/clients/'. $this->clients->id]
         ];
     }
 }

@@ -30,7 +30,7 @@ class UsersChangeNotification extends Notification
                 ->line('Hello '.$this->user->name)
                 ->line('Some changes have been made to your Mayan account')
                 ->line('This may have been done by you or by the system administrator, however, its advised you login to check if the updated information is correct')
-                ->line('If you are unable to login. please contact your system administrator immediately')
+                ->line('If you are unable to login. please contact your system administrator imediately')
                 ->action('Login', url('/'));
     }
 

@@ -11,51 +11,35 @@ class ClientUpdateNotification extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $user;
+    private $clients;
+
+    public function __construct($user, $clients)
     {
-        //
+        $this->user = $user;
+        $this->clients = $clients;
+
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line($this->user->name)
+                    ->line('The TMO profile for '. $this->clients->client_organisation .' has been updated')
+                    ->line('You have recieved this notification because your are either an adminstrator or you have been assigned as the liaision officer responsible for this TMO')
+                    ->action('View TMO', url('/clients/'. $this->clients->id));
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
     public function toArray($notifiable)
     {
         return [
-            //
+            'notify' => ['Your assigned TMO, '. $this->clients->client_organisation.' has been updated.'],
+            'url' => ['/clients/'. $this->clients->id]
         ];
     }
 }
