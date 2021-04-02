@@ -38,7 +38,8 @@ class UsersChangeNotification extends Notification
     {
         return
         [
-            'notify' => ['Information linked to your account has been changed']
+            'notify' => ['Information linked to your account has been changed'],
+            'url' => ['/user/profile']
         ];
     }
 }

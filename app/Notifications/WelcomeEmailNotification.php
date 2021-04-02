@@ -37,7 +37,8 @@ class WelcomeEmailNotification extends Notification
     {
         return
         [
-            'notify' => ['Welcome '.$this->user->name]
+            'notify' => ['Welcome '.$this->user->name],
+            'url' => ['/user/profile']
         ];
     }
 
