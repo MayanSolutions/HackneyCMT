@@ -30,8 +30,6 @@ class ClientController extends Controller
                     ->orWhere('client_address', 'LIKE', '%' . $organisation . '%')
                     ->orWhere('client_manager', 'LIKE', '%' . $organisation . '%')
                     ->orWhere('client_deputy', 'LIKE', '%' . $organisation . '%')
-                    ->orWhere('client_chair', 'LIKE', '%' . $organisation . '%')
-                    ->orWhere('client_secretary', 'LIKE', '%' . $organisation . '%')
                     ->get();
                 }
             }]
