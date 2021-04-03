@@ -49,12 +49,12 @@
         @livewireScripts
     </body>
     <footer class="text-gray-600 body-font">
-        <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+        <div class="container mx-auto flex items-center sm:flex-row flex-col">
           <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                <img src="{{url('/images/MayanSoftwareSolutionsLogo.png')}}" alt="Logo" style="height: 70px; width: 70px;">
+                <img src="{{url('/images/MayanSoftwareSolutionsLogo.png')}}" alt="Logo" style="height: 60px; width: 60px;">
           </a>
-          <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2021 Mayan Software Solutions —
-            <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@Hackney</a>
+          <p class="text-xs text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">Mayan Software Solutions
+            <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank"></a>
           </p>
         </div>
       </footer>

@@ -1,6 +1,6 @@
 <div>
     <div class="container w-full items-center">
-        <div class="shadow-lg rounded-2xl mb-2 w-full p-2 bg-white dark:bg-gray-800">
+        <div class="shadow-lg rounded-2xl mb-2 w-full p-2 bg-gradient-to-b from-white to-gray-100 dark:bg-gray-800">
             <p class="font-bold text-md p-2 border-b mb-3 border-gray-200 text-black dark:text-white">
                 My Notifications
             </p>
@@ -11,7 +11,10 @@
                 0 unread Notifications
                 @endif
             </span>
-            <button class="float-right text-xs outline-none focus:outline-none" wire:click="read"><x-heroicon-o-x-circle class="mr-3 w-5 h-5 text-red-500"/></button>
+            @if($countNotifications > 0)
+            <button class="float-right text-xs outline-none focus:outline-none" wire:click="read"><x-heroicon-o-mail-open class="mr-3 w-5 h-5 text-red-500"/></button>
+            @else
+            @endif
             <ul>
                 @forelse($notifications as $notification)
                 <li class="flex items-center text-gray-600 dark:text-gray-200 justify-between py-3 dark:border-gray-800">
@@ -25,17 +28,13 @@
                         </span>
                         @endforeach
                     </div>
-                    @forelse($notification->data['url'] as $link)
-                    <span class="font-bold text-md p-2 text-xs text-black dark:text-gray-300 dark:text-white ml-1">
-                        <a href="{{ $link }}"  class="inline-flex font-bold bg-white text-gray-800 hover:bg-teal-600 text-white hover:text-white text-xs font-semibold py-1 px-2 rounded shadow">View</a>
-                    </span>
-                    @empty
-                    <span class="font-bold text-md p-2 text-xs text-black dark:text-gray-300 dark:text-white ml-1">
-                        <a href="{{ $link }}"  class="inline-flex font-bold bg-white text-gray-800 hover:bg-teal-600 text-white hover:text-white text-xs font-semibold py-1 px-2 rounded shadow">View</a>
-                    </span>
-                    @endforelse
                     <span class="font-bold text-md p-2 mr-4 text-xs text-teal-500 dark:text-gray-300 dark:text-white ml-1">
                         {{ $notification->created_at->diffForHumans() }}
+                        @foreach($notification->data['url'] as $link)
+                        <span class="font-bold text-md p-2 text-xs text-black dark:text-gray-300 dark:text-white ml-1">
+                            <a href="{{ $link }}"  class="inline-flex font-bold bg-white text-gray-800 hover:bg-teal-600 text-white hover:text-white text-xs font-semibold py-1 px-2 rounded shadow">View</a>
+                        </span>
+                        @endforeach
                     </span>
                 </li>
                 @empty
@@ -55,5 +54,6 @@
         {{ $notifications->links() }}
     </div>
 </div>
+
 
 
