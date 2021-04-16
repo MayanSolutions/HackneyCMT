@@ -6,7 +6,7 @@
             </p>
             <span class="font-bold text-md mt-2 underline p-2 text-xs text-teal-500 dark:text-gray-300 dark:text-white">
                 @if($countNotifications > 0)
-                {{ $countNotifications }} recent Notifications
+                {{ $countNotifications }} Recent Notifications
                 @else
                 0 unread Notifications
                 @endif

@@ -23,6 +23,6 @@ class Dashnotifications extends Component
     {
         return view('livewire.dashnotifications',
         ['notifications'=>auth()->user()->unreadNotifications()->paginate(3)],
-        ['countNotifications'=>Auth::user()->unreadNotifications()->count()]);
+        ['countNotifications'=>Auth::user()->unreadNotifications()->count()],);
     }
 }

@@ -9,6 +9,7 @@
 
           <div class="block mb-8">
              <a href="{{ route('clients.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">Organisation List</a>
+             <a href="{{ route('clientfunctions.show', $clientDetails->id) }}" class="bg-orange-400 hover:bg-orange-500 text-white font-bold text-xs py-2 px-4 rounded">Functions</a>
           </div>
 
           <div class="bg-white shadow overflow-hidden sm:rounded-lg">

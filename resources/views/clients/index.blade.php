@@ -96,12 +96,25 @@
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="flex items-center">
                                                         <div class="">
+                                                            @if($client->members->count()<1)
+                                                            <div class="text-sm font-medium text-red-500">
+                                                                Action Required !
+                                                            </div>
+                                                            <div class="text-xs text-red-500">
+                                                                No board members registered
+                                                            </div>
+                                                            @else
+                                                            @foreach($client->members as $member)
+                                                            @if($member->position == 'Board Chair')
                                                             <div class="text-sm font-medium text-gray-900">
-                                                                {{ $client->client_chair }}
+                                                                {{ $member->elected_name }}
                                                             </div>
                                                             <div class="text-xs text-gray-500">
-                                                                {{ $client->client_secretary }}
+                                                                {{ $member->position }}
                                                             </div>
+                                                            @endif
+                                                            @endforeach
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </td>
@@ -109,7 +122,6 @@
                                                 <div class="text-sm text-gray-500 ">{{ $client->client_address }}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="{{ route('clientfunctions.show', $client->id) }}" class="inline-flex bg-white hover:bg-blue-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Functions</a>
                                                 <a href="{{ route('clients.show', $client->id) }}" class="inline-flex bg-white hover:bg-purple-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Show</a>
                                                     @can('client_edit')
                                                 <a href="{{ route('clients.edit', $client->id) }}" class="inline-flex bg-white hover:bg-orange-500 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Modify</a>

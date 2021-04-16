@@ -9,9 +9,7 @@ use App\Models\MatrixFunction;
 use App\Models\Members;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Collection;
 use Symfony\Component\HttpFoundation\Response;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Carbon;
 
 class ClientController extends Controller
@@ -82,8 +80,7 @@ class ClientController extends Controller
     {
         abort_if(Gate::denies('client_access'), Response::HTTP_FORBIDDEN, 'Insufficient Permissions');
 
-        $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
-
+        $clientDetails = clients::with(['EstateDetails', 'members'])->where('id', $id)->first();
 
         $date = today()->format('Y-m-d');
         $boardDetails = members::where('client_id', $id)->where('position_exp_date', '>=', Carbon::now())->get();
@@ -94,7 +91,7 @@ class ClientController extends Controller
             ->where('client_id', $clientDetails->id)
             ->get();
 
-        if ($functions->isEmpty()){
+        if($functions->isEmpty()){
             $control = 0;
         }elseif($clientFunctions->isEmpty()){
             $control = 0;
