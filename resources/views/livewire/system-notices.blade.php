@@ -27,7 +27,7 @@
                             </span>
                         </div>
                     </span>
-                    @foreach($clientboard as $board)
+                    @forelse($clientboard as $board)
                     <div class="flex items-center justify-start text-sm">
                         <span class="font-bold text-md p-2 text-xs text-grey-500 dark:text-gray-300 dark:text-white ml-2">
                             <x-heroicon-o-users class="w-4 h-4 text-green-500"/>
@@ -43,9 +43,10 @@
                             </span>
                         </span>
                     </div>
-                    @endforeach
+                    @empty
+                    @endforelse
 
-                    @foreach($clientestate as $estate)
+                    @forelse($clientestate as $estate)
                     <div class="flex items-center justify-start text-sm">
                         <span class="font-bold text-md p-2 text-xs text-grey-500 dark:text-gray-300 dark:text-white ml-2">
                             <x-heroicon-o-office-building class="w-5 h-5 text-teal-500"/>
@@ -61,8 +62,8 @@
                             </span>
                         </span>
                     </div>
-                    @endforeach
-                    
+                    @empty
+                    @endforelse
                 </div>
             </div>
         </div>
