@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth', 'checkuserstatus']], function () {
     Route::delete('/reviews/{review}/questions/{question}', [\App\Http\Controllers\QuestionController::class, 'destroy']);
 
     //Survey controllers
-    Route::get('surveys.index', [\App\Http\Controllers\SurveyController::class, 'index']);
+    Route::get('/surveys.index', [\App\Http\Controllers\SurveyController::class, 'index']);
     Route::get('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'show']);
     Route::post('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'store']);
 

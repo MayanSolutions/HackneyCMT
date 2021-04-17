@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Observers\UserObserver;
 use App\Models\clients;
 use App\Observers\ClientObserver;
+use App\Models\Members;
+use App\Observers\MembersObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,5 +31,6 @@ class AppServiceProvider extends ServiceProvider
     {
         User::observe(UserObserver::class);
         clients::observe(ClientObserver::class);
+        Members::observe(MembersObserver::class);
     }
 }
