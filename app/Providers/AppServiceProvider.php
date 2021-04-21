@@ -6,9 +6,13 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\User;
 use App\Observers\UserObserver;
 use App\Models\clients;
+use App\Models\MatrixCategory;
+use App\Models\MatrixFunction;
 use App\Observers\ClientObserver;
 use App\Models\Members;
 use App\Observers\MembersObserver;
+use App\Observers\FunctionObserver;
+use App\Observers\ServiceObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,5 +36,7 @@ class AppServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         clients::observe(ClientObserver::class);
         Members::observe(MembersObserver::class);
+        MatrixFunction::observe(FunctionObserver::class);
+        MatrixCategory::observe(ServiceObserver::class);
     }
 }

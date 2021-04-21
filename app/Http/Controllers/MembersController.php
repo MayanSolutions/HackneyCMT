@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Members;
 use Illuminate\Http\Request;
 use App\Models\clients;
+use Carbon\Carbon as CarbonCarbon;
 use Illuminate\Support\Carbon;
+
 
 class MembersController extends Controller
 {
@@ -32,9 +34,9 @@ class MembersController extends Controller
             'position.*'  => 'required',
             ]);
 
-            if($request->agm_date > 0){
+            if($request->elected_name > 0){
 
-                $count = count($request->agm_date);
+                $count = count($request->elected_name);
                 $agm_date = $request->agm_date;
                 $elected_name = $request->elected_name;
                 $position = $request->position;
@@ -44,13 +46,13 @@ class MembersController extends Controller
                 for ($i=0; $i < $count; ++$i )
                 {
                 $members = new Members();
-                $members->agm_date = $agm_date[$i];
+                $members->agm_date = $request->agm_date;
                 $members->client_id = $clients->id;
                 $members->elected_name = $elected_name[$i];
                 $members->position = $position[$i];
                 $members->elected_email = $elected_email[$i];
                 $members->elected_contact = $elected_contact[$i];
-                $members->position_exp_date = Carbon::parse($agm_date[$i])->addDays(366);
+                $members->position_exp_date = Carbon::parse($request->agm_date)->addDays(366);
                 $members->save();
                 }
 

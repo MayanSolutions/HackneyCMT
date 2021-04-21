@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Models\User;
 use App\Notifications\UsersChangeNotification;
 use App\Notifications\WelcomeEmailNotification;
+use App\Notifications\UserDeletionNotification;
 
 class UserObserver
 {
@@ -31,7 +32,16 @@ class UserObserver
 
     public function deleted(User $user)
     {
-        //
+        $user->notify(new UserDeletionNotification($user));
+
+        $useradmins = User::whereHas('roles', function ($query) {
+            $query->where('id', 1);
+        })->get();
+
+        foreach($useradmins as $useradmin)
+        {
+            $useradmin->notify(new UserDeletionNotification($user));
+        }
     }
 
 

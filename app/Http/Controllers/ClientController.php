@@ -83,7 +83,7 @@ class ClientController extends Controller
         $clientDetails = clients::with(['EstateDetails', 'members'])->where('id', $id)->first();
 
         $date = today()->format('Y-m-d');
-        $boardDetails = members::where('client_id', $id)->where('position_exp_date', '>=', Carbon::now())->get();
+        $boardDetails = members::where('client_id', $id)->where('position_exp_date', '>=', now())->get();
         $functions = MatrixFunction::all();
         $clientFunctions = DB::table('matrix_functions')
             ->join('clients_matrix_function', 'clients_matrix_function.function_id', '=', 'id')

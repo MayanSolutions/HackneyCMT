@@ -97,23 +97,19 @@
                                                     <div class="flex items-center">
                                                         <div class="">
                                                             @if($client->members->count()<1)
-                                                            <div class="text-sm font-medium text-red-500">
-                                                                Action Required !
+                                                            <div class="text-xs font-medium text-red-500">
+                                                                Action Required
                                                             </div>
                                                             <div class="text-xs text-red-500">
                                                                 No board members registered
                                                             </div>
                                                             @else
-                                                            @foreach($client->members as $member)
-                                                            @if($member->position == 'Board Chair')
-                                                            <div class="text-sm font-medium text-gray-900">
-                                                                {{ $member->elected_name }}
+                                                            <div class="text-sm font-medium text-gray-500">
+                                                               {{ $client->members->count()}} Members
                                                             </div>
-                                                            <div class="text-xs text-gray-500">
-                                                                {{ $member->position }}
+                                                            <div class="text-xs text-green-500">
+                                                                Elected
                                                             </div>
-                                                            @endif
-                                                            @endforeach
                                                             @endif
                                                         </div>
                                                     </div>

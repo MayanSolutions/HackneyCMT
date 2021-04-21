@@ -31,6 +31,7 @@
                    </p>
                 </div>
                 <div class="px-1 py-4 mx-auto sm:max-w-xl bg-white md:max-w-full lg:max-w-screen-xl md:px-6 lg:px-2 lg:py-5">
+                    @if(count($boardDetails) > 0)
                    <div class="pr-3 pl-3 grid max-w-full gap-5 row-gap-3 sm:row-gap-5 lg:max-w-full lg:grid-cols-4 sm:mx-auto">
                       @foreach($boardDetails as $member)
                       <div class="flex flex-col justify-between p-5 bg-white border rounded shadow-sm">
@@ -86,12 +87,26 @@
                          </div>
                       </div>
                       @endforeach
+                      @else
+                      <section class="w-full bg-white">
+                        <div class="w-full px-4 py-10 mx-auto text-left md:text-center md:w-3/4 lg:w-2/4">
+                           <h2 class="mb-6 font-extrabold tracking-tight md:text-1xl md:mb-6 md:leading-tight">
+                              There are no board members on our system
+                           </h2>
+                           <div class="mb-0 space-x-0 md:space-x-2">
+                              <p class="mt-1 max-w-2xl text-xs text-gray-600 text-white">
+                                 Former board members are stored on our system for a maximum of 12 months.
+                              </p>
+                           </div>
+                        </div>
+                     </section>
+                     @endif
                    </div>
-                </div>
-                <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
-                   <a href="/members/create/{{$filterClient->id}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                   Add Board Members
-                   </a>
+                   <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
+                    <a href="/members/create/{{$filterClient->id}}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                    Add Board Members
+                    </a>
+                 </div>
                 </div>
              </div>
              <br>

@@ -6,6 +6,7 @@ use App\Models\Members;
 use App\Models\clients;
 use App\Models\User;
 use App\Notifications\MemberCreatedNotification;
+use App\Notifications\MemberUpdateNotification;
 
 class MembersObserver
 {
@@ -21,7 +22,10 @@ class MembersObserver
 
     public function updated(Members $members)
     {
-        //
+        $client = Members::where('id', $members->id)->first();
+        $client = clients::where('id', $client->client_id)->first();
+        $user = User::where('id', $client->user_id)->first();
+        $user->notify(new MemberUpdateNotification($user, $members, $client));
     }
 
 
