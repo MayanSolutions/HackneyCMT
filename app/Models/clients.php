@@ -67,7 +67,7 @@ class clients extends Model
 
     public function EstateDetails()
     {
-        return $this->belongsTo(EstateDetail::class, 'id', 'client_id');
+        return $this->hasOne(EstateDetail::class, 'client_id', 'id');
     }
 
     public function surveys()

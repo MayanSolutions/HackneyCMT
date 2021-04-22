@@ -10,6 +10,8 @@ use App\Models\MatrixCategory;
 use App\Models\MatrixFunction;
 use App\Observers\ClientObserver;
 use App\Models\Members;
+use App\Models\EstateDetail;
+use App\Observers\EstateObserver;
 use App\Observers\MembersObserver;
 use App\Observers\FunctionObserver;
 use App\Observers\ServiceObserver;
@@ -38,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
         Members::observe(MembersObserver::class);
         MatrixFunction::observe(FunctionObserver::class);
         MatrixCategory::observe(ServiceObserver::class);
+        EstateDetail::observe(EstateObserver::class);
     }
 }

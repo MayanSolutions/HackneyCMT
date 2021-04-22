@@ -49,6 +49,6 @@ class EstateDetail extends Model
 
     public function clients()
     {
-        return $this->hasMany(Survey::class, 'id', 'client_id');
+        return $this->belongsTo(clients::class, 'id', 'client_id');
     }
 }

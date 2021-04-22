@@ -40,7 +40,7 @@ class ServiceDeletionNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'notify' => ['The Service'.$this->matrixCategory->category.' has been deleted from our system. If this service had been applied to your TMO, it will be removed from the responsibilities list'],
+            'notify' => ['The Service, '.$this->matrixCategory->category.' has been deleted from our system. If this service had been applied to your TMO, it will be removed from the responsibilities list'],
             'url' => ['/matrixcategories/']
         ];
     }
