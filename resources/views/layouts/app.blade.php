@@ -29,6 +29,7 @@
         <section id="loading">
             <div id="loading-content"></div>
         </section>
+
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation-dropdown')
 

@@ -31,6 +31,8 @@ class UserObserver
 
 
     public function deleted(User $user)
+
+    
     {
         $user->notify(new UserDeletionNotification($user));
 
@@ -42,6 +44,8 @@ class UserObserver
         {
             $useradmin->notify(new UserDeletionNotification($user));
         }
+
+
     }
 
 
