@@ -41,7 +41,7 @@
                     <br>
 
                     <div class="shadow overflow-hidden sm:rounded-md">
-                        <div class="bg-purple-500 px-4 py-5 sm:px-6">
+                        <div class="bg-purple-600 px-4 py-5 sm:px-6">
                             <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                                Board Profile
                             </h3>

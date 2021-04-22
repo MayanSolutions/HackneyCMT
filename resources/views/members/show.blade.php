@@ -22,7 +22,7 @@
              </div>
              <br>
              <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-md">
-                <div class="bg-purple-500 border-b border-gray-200 px-4 py-5 sm:px-6">
+                <div class="bg-purple-600 border-b border-gray-200 px-4 py-5 sm:px-6">
                    <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
                       Board Profile
                    </h3>
