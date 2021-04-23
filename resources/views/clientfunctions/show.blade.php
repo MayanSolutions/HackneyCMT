@@ -10,6 +10,17 @@
                 <a href="{{ route('clients.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">Organisation List</a>
              </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
+                <div class="shadow overflow-hidden sm:rounded-md">
+                    <div class="bg-teal-500 px-4 py-5 sm:px-6">
+                        <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">
+                          {{ $clients->client_organisation}}
+                        </h3>
+                        <p class="mb-1 mt-1 ml-1 max-w-2xl text-xs text-white">
+                            {{ $clients->client_address }}
+                        </p>
+                    </div>
+                </div>
+                <br>
                 @if(!empty($clientDetails->EstateDetails))
                 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                     <div class="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-12 lg:px-8 lg:py-8">

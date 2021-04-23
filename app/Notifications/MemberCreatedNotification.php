@@ -35,7 +35,7 @@ class MemberCreatedNotification extends Notification
                     ->line('Hello ' .$this->user->name)
                     ->line($this->members->elected_name.' has been added as a ' .$this->members->position.' for '.$this->client->client_organisation)
                     ->line('You have recieved this email because you are the liaison officer assigned to this TMO organisation')
-                    ->action('View TMO', url('/clients/'. $this->client->id))
+                    ->action('View', url('/members/show/'. $this->client->id))
                     ->line('Thank you');
     }
 
@@ -44,7 +44,7 @@ class MemberCreatedNotification extends Notification
     {
         return [
             'notify' => ['A new board member, '.$this->members->elected_name.' has been registered for '. $this->client->client_organisation.' '],
-            'url' => ['/clients/'. $this->client->id]
+            'url' => ['//members/show/'. $this->client->id]
         ];
     }
 }

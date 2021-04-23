@@ -37,7 +37,6 @@ class MembersController extends Controller
             if($request->elected_name > 0){
 
                 $count = count($request->elected_name);
-                $agm_date = $request->agm_date;
                 $elected_name = $request->elected_name;
                 $position = $request->position;
                 $elected_email = $request->elected_email;
@@ -87,12 +86,12 @@ class MembersController extends Controller
 
             $member = Members::where('id', $id)->first();
             $member->update([
-                'agm_date' => $request->input('agm_date'),
-                'elected_name' => $request->input('elected_name'),
-                'position' => $request->input('position'),
-                'elected_contact' => $request->input('elected_contact'),
-                'elected_email' => $request->input('elected_email'),
-                'position_exp_date' => $request->input('position_exp_date'),
+                'agm_date' => $request->agm_date,
+                'elected_name' => $request->elected_name,
+                'position' => $request->position,
+                'elected_contact' => $request->elected_contact,
+                'elected_email' => $request->elected_email,
+                'position_exp_date' => $request->position_exp_date,
                 ]);
 
             return redirect('/members/show/'.$member->client_id)->withSuccessMessage('Board member updated');

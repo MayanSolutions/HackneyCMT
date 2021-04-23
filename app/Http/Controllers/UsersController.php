@@ -105,13 +105,16 @@ class UsersController extends Controller
         {
             $user->update(['active' => false]);
             $user->save();
+
+            return back()->withSuccessMessage('Account deactivated');
         }
         else
         {
             $user->update(['active' => true ]);
             $user->save();
+
+            return back()->withSuccessMessage('Account reactivated');
         }
 
-        return back()->withSuccessMessage('Account status changed');
     }
 }

@@ -81,7 +81,6 @@
                     </div>
                 </div>
                 <br>
-                        <div class="border-t border-gray-200">
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                     <h3 class="mb-2 mt-4 ml-6 font-extrabold float-left tracking-tight text-gray-700">
                                         Housing Function
@@ -174,7 +173,6 @@
                                   </section>
                                 @endif
                             </div>
-                     </div>
                      <br>
                      {!! $functions->links() !!}
                 </div>
