@@ -140,7 +140,7 @@ class EstateDetailController extends Controller
             ]);
 
 
-            $estates = EstateDetail::where('id', $id)->first();
+            $estates = EstateDetail::find($id);
 
             $propertycalculation = $request->no_of_units;
             if ($request->freeholders + $request->leaseholders + $request->tenants != $propertycalculation) {

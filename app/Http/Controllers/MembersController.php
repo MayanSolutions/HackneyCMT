@@ -84,7 +84,7 @@ class MembersController extends Controller
             'position_exp_date' => 'required',
             ]);
 
-            $member = Members::where('id', $id)->first();
+            $member = Members::find($id);
             $member->update([
                 'agm_date' => $request->agm_date,
                 'elected_name' => $request->elected_name,
@@ -95,7 +95,6 @@ class MembersController extends Controller
                 ]);
 
             return redirect('/members/show/'.$member->client_id)->withSuccessMessage('Board member updated');
-
     }
 
 

@@ -44,12 +44,13 @@
                             <label for="position" class="block font-medium text-sm text-gray-700">Currently: {{ $members->position }}</label>
                             <select name="position" id="position" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
                                 <option value="Board Member">Board Member</option>
-                                <option value="Board Secretary" {{($members->position === 'Board Secretary') ? 'Selected' : ''}}>Board Secretary</option>
-                                <option value="Vice Chair" {{($members->position === 'Vice Chair') ? 'Selected' : ''}}>Vice Chair</option>
-                                <option value="Board Chair" {{($members->position === 'Board Chair') ? 'Selected' : ''}}>Board Chair</option>
-                                <option value="Co-opted Member" {{($members->position === 'Co-opted Member') ? 'Selected' : ''}}>Co-opted Member</option>
-                                <option value="Councillor" {{($members->position === 'Councillor') ? 'Selected' : ''}}>Councillor</option>
-                                <option value="Commitee Member" {{($members->position === 'Commitee Member') ? 'Selected' : ''}}>Commitee Member</option>
+                                <option value="Board Secretary">Board Secretary</option>
+                                <option value="Vice Chair">Vice Chair</option>
+                                <option value="Board Chair">Board Chair</option>
+                                <option value="Co-opted Member">Co-opted Member</option>
+                                <option value="Councillor">Councillor</option>
+                                <option value="Commitee Member">Commitee Member</option>
+                                <option value="{{ $members->position }}" selected="selected">{{ $members->position }}</option>
                             </select>
                             @error('position')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
@@ -71,11 +72,8 @@
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
-
                     </div>
-
                     <br>
-
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="bg-red-500 px-4 py-5 sm:px-6">
                             <h3 class="mb-1 mt-1 ml-1 text-lg font-extrabold tracking-tight text-white">

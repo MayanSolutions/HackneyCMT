@@ -233,7 +233,7 @@
                 <div class="px-1 py-4 mx-auto sm:max-w-xl bg-white md:max-w-full lg:max-w-screen-xl md:px-6 lg:px-2 lg:py-5">
                    <div class="pr-3 pl-3 grid max-w-full gap-5 row-gap-3 sm:row-gap-5 lg:max-w-full lg:grid-cols-4 sm:mx-auto">
                     @foreach($boardDetails as $member)
-                    <div class="shadow-lg rounded-2xl bg-gray-200 dark:bg-gray-800 p-4">
+                    <div class="shadow-lg rounded-2xl bg-gray-100 dark:bg-gray-800 p-4">
                         <div class="flex-row gap-4 flex justify-center items-center">
                             <div class="flex-shrink-0">
                                 <a href="#" class="block relative">

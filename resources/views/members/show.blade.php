@@ -34,7 +34,7 @@
                     @if(count($boardDetails) > 0)
                    <div class="pr-3 pl-3 grid max-w-full gap-5 row-gap-3 sm:row-gap-5 lg:max-w-full lg:grid-cols-4 sm:mx-auto">
                       @foreach($boardDetails as $member)
-                      <div class="flex flex-col justify-between p-5 bg-gray-200 border rounded shadow-sm">
+                      <div class="flex flex-col justify-between p-5 bg-gray-100 border rounded shadow-sm">
                          <div class="mb-1">
                             <div class="flex items-center justify-between pb-3 mb-1 border-b">
                                <div>
