@@ -128,6 +128,11 @@ class User extends Authenticatable
         $this->hasMany(DashOrder::class);
     }
 
+    public function AnnualReviewLinks()
+    {
+        return $this->hasMany(AnnualReviewLink::class);
+    }
+
     public function setPasswordAttribute($password)
     {
         if (trim($password) === '') {

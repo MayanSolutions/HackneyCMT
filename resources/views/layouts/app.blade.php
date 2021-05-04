@@ -95,7 +95,7 @@
         confirmButtonText: 'Yes, I understand'
             }).then((result) => {
     if (result.value) {
-    form.submit();
+    
     }
     })
     })

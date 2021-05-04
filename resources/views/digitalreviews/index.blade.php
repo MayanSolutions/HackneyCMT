@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-         TMO Reviews
+          Digital Reviews
        </h2>
     </x-slot>
     <div>
@@ -9,7 +9,12 @@
        <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
            @can('can_create_matrix_cat')
             <div class="block mb-8">
-                <a href="" class="bg-green-400 hover:bg-green-600 text-white font-bold text-xs py-2 px-4 rounded">Assign review</a>
+                @can('can_create_digi_reviews')
+                <a href="reviews\create" class="bg-green-400 hover:bg-green-600 text-white font-bold text-xs py-2 px-4 rounded">Create Digital Review</a>
+                @endcan
+                @can('review_access')
+                <a href="/surveys.index" class="bg-orange-400 hover:bg-orange-600 text-white font-bold text-xs py-2 px-4 rounded">Submissions</a>
+                @endcan
             </div>
           @endcan
           <div class="flex flex-col">
@@ -21,12 +26,12 @@
                             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                                <div class="shadow overflow-hidden border-b border-gray-200 ">
                                 <h2 class="mb-2 mt-4 ml-6 font-extrabold float-left tracking-tight text-gray-700">
-                                    TMO Reviews
+                                    Digital Annual Review Surveys
                                   </h2>
 
-                                  <form action="{{ route('reviewslist.index') }}" method="GET" role="search">
+                                  <form action="{{ route('digitalreviews.index') }}" method="GET" role="search">
                                     <div class="pt-2 relative mx-auto float-right mr-3 mb-2 text-gray-600">
-                                      <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" name="surveys" placeholder="Search by Digital response">
+                                      <input class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none" type="text" name="review" placeholder="Search by Digital Review">
                                       <button type="submit" id="category" class="absolute right-0 top-0 mt-5 mr-4">
                                         <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
                                           xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
@@ -39,67 +44,58 @@
                                     </div>
                                  </form>
                                </div>
-                               @if (count($surveys) > 0)
+                               @if (count($reviews) > 0)
                                   <table class="min-w-full divide-y divide-gray-200">
                                      <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                TMO Organisation
+                                                Review Title
                                             </th>
                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Assessment
+                                                Review Purpose
                                            </th>
                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Submitted by
-                                            </th>
-                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                Date of submission
+                                                Review Version
                                             </th>
                                            <th scope="col" class="relative px-6 py-3">
                                               <span class="sr-only">Edit</span>
                                            </th>
                                         </tr>
                                      </thead>
-                                     @foreach ($surveys as $response)
+                                     @foreach ($reviews as $review)
                                      <tbody class="bg-white divide-y divide-gray-200">
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="text-sm text-gray-500">
-                                                    {{ $response->client_organisation }}
+                                                    {{ $review->title }}
                                                 </div>
                                             </td>
 
                                            <td class="px-6 py-4 whitespace-nowrap">
                                               <div class="text-sm text-gray-500">
-                                                @foreach($response->surveys as $review)
-                                                {{ $review->review->title }}
-                                                @endforeach
+                                                {{  $review->purpose  }}
                                               </div>
                                            </td>
 
                                            <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-500">
-                                                @foreach($response->surveys as $officer)
-                                                {{  $officer->officer  }}
-                                                @endforeach
+                                                {{  $review->version  }}
                                             </div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-500">
-                                                    @foreach($response->surveys as $created)
-                                                    {{  $created->created_at  }}
-                                                    @endforeach
-                                                </div>
-                                            </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="" class="inline-flex bg-white hover:bg-purple-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Show</a>
-                                                 <a href="" class="inline-flex bg-white hover:bg-orange-500 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Modify</a>
-                                                 <form class="inline-block" action="" method="POST">
-                                                 <input type="hidden" name="_method" value="DELETE">
-                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                 <a type="submit" class="bg-white hover:bg-red-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow delete-confirm">Delete</a>
+                                            <div class="text-sm text-gray-500">
+                                                @can('can_edit_digi_reviews')
+                                                <a href="{{ $review->path() }}"  class="inline-flex bg-white hover:bg-blue-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow">Show/Modify</a>
+                                                @endcan
+                                                @can('can_delete_digi_reviews')
+                                                <form class="inline-block" action="{{ route('digitalreviews.destroy', $review->id) }}" method="POST">
+                                                    <input type="hidden" name="_method" value="DELETE">
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                    <a type="submit" class="bg-white hover:bg-red-600 text-gray-800 hover:text-white text-xs font-semibold py-1 px-2 border border-gray-400 rounded shadow delete-confirm">Delete</a>
                                                 </form>
-                                            </td>
+                                                @endcan
+                                            </div>
+                                         </td>
                                         </tr>
                                         <!-- More items... -->
                                      </tbody>

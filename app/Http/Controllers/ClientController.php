@@ -73,7 +73,7 @@ class ClientController extends Controller
                 'user_id' => $request->input('liaison_officer'),
                 ]);
 
-                return redirect()->route('clients.index')->withSuccessMessage('TMO profile created');;
+                return redirect()->route('clients.index')->withSuccessMessage('TMO profile created');
     }
 
     public function show($id, Request $request)

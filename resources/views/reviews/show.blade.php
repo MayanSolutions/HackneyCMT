@@ -7,7 +7,7 @@
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="block mb-8">
-                <a href="{{ route('reviewslist.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">Review List</a>
+                <a href="{{ route('digitalreviews.index') }}" class="bg-gray-400 hover:bg-gray-500 text-white font-bold text-xs py-2 px-4 rounded">Review List</a>
                 <a href="/surveys/{{ $review->id }}-{{ Str::slug($review->id) }}" class="bg-green-400 hover:bg-green-500 text-white font-bold text-xs py-2 px-4 rounded">Live Submission</a>
              </div>
                 <div class="bg-purple-600 shadow overflow-hidden sm:rounded-lg">

@@ -21,6 +21,8 @@ class CreateSurveyResponsesTable extends Migration
             $table->string('liaison_officer')->nullable();
             $table->boolean('assessment_result')->nullable();
             $table->string('comments')->nullable();
+            $table->mediumText('commentary')->nullable();
+            $table->string('file_name')->nullable();
             $table->timestamps();
         });
     }

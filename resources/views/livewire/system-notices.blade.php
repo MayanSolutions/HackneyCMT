@@ -110,7 +110,7 @@
                         </span>
                         <span class="font-bold text-md p-2 text-xs text-black dark:text-gray-300 dark:text-white ml-1">
                             @can('client_edit')
-                            <a href="{{ route('clients.show', $function->id) }}"  class="inline-flex font-bold bg-white text-gray-800 hover:bg-teal-600 text-white hover:text-white text-xs font-semibold py-1 px-2 rounded shadow">Fix</a>
+                            <a href="{{ route('clientfunctions.show', $function->id) }}"  class="inline-flex font-bold bg-white text-gray-800 hover:bg-teal-600 text-white hover:text-white text-xs font-semibold py-1 px-2 rounded shadow">Fix</a>
                             @endcan
                         </span>
                     </div>

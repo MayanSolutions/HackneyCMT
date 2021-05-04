@@ -44,7 +44,7 @@ class MemberCreatedNotification extends Notification
     {
         return [
             'notify' => ['A new board member, '.$this->members->elected_name.' has been registered for '. $this->client->client_organisation.' '],
-            'url' => ['//members/show/'. $this->client->id]
+            'url' => ['/members/show/'. $this->client->id]
         ];
     }
 }

@@ -51,4 +51,9 @@ class Review extends Model
     {
         return $this->hasMany(Survey::class);
     }
+
+    public function AnnualReviewLinks()
+    {
+        return $this->hasMany(AnnualReviewLink::class);
+    }
 }

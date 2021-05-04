@@ -24,11 +24,13 @@ Route::group(['middleware' => ['auth', 'checkuserstatus']], function () {
     Route::get('/estatedetails/create/{id}', [\App\Http\Controllers\EstateDetailController::class, 'create']);
     Route::post('/estatedetails/{clients}', [\App\Http\Controllers\EstateDetailController::class, 'store'])->name('estatedetails.custom.store');
     Route::resource('estatedetails', \App\Http\Controllers\EstateDetailController::class);
-    Route::resource('reviewslist', \App\Http\Controllers\ReviewHomeController::class);
+    Route::resource('digitalreviews', \App\Http\Controllers\DigitalReviewController::class);
     Route::get('/members/create/{id}', [\App\Http\Controllers\MembersController::class, 'create']);
     Route::post('/members/{clients}', [\App\Http\Controllers\MembersController::class, 'store'])->name('members.custom.store');
     Route::get('/members/show/{id}', [\App\Http\Controllers\MembersController::class, 'show']);
     Route::resource('members', \App\Http\Controllers\MembersController::class);
+    Route::resource('', \App\Http\Controllers\AnnualReviewLinkController::class);
+    Route::resource('assignments', \App\Http\Controllers\AnnualReviewLinkController::class);
 
     // digital review controllers
     Route::get('/reviews/create', [\App\Http\Controllers\ReviewController::class, 'create']);
@@ -41,10 +43,11 @@ Route::group(['middleware' => ['auth', 'checkuserstatus']], function () {
     Route::delete('/reviews/{review}/questions/{question}', [\App\Http\Controllers\QuestionController::class, 'destroy']);
 
     //Survey controllers
-    Route::get('/surveys.index', [\App\Http\Controllers\SurveyController::class, 'index']);
     Route::get('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'show']);
     Route::post('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'store']);
 
+    //Assessment controllers
+    Route::resource('assessments', \App\Http\Controllers\SurveyReviewController::class);
 });
 
 

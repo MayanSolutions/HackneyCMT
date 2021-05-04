@@ -40,6 +40,7 @@ class ClientFunction extends Controller
         ])
         ->paginate(4);
 
+
         $clientDetails = clients::with('EstateDetails')->where('id', $id)->first();
         $functions = MatrixFunction::all();
         $clientFunction = DB::table('matrix_functions')

@@ -22,6 +22,7 @@ class CreateMembersTable extends Migration
             $table->string('elected_email')->nullable();
             $table->string('elected_contact')->nullable();
             $table->dateTime('position_exp_date');
+            $table->dateTime('deletion_date')->nullable();
             $table->timestamps();
         });
     }

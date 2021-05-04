@@ -49,10 +49,10 @@
                                             <p class="mb-1 font-bold tracking-wide text-xs">Features</p>
                                             <ul class="space-y-2">
                                                 @foreach($rolePermissions as $rolePermission)
-                                                @if($rolePermission->area == 'users')
+                                                @if($rolePermission->area == 'Users')
                                               <li class="flex items-center text-xs">
                                                 <div class="mr-2">
-                                                  <svg class="w-4 h-4 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
+                                                  <svg class="w-4 h-4 text-green-500" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
                                                     <polyline fill="none" stroke="currentColor" points="6,12 10,16 18,8"></polyline>
                                                     <circle cx="12" cy="12" fill="none" r="11" stroke="currentColor"></circle>
                                                   </svg>
@@ -85,10 +85,10 @@
                                             <p class="mb-1 font-bold tracking-wide text-xs">Features</p>
                                             <ul class="space-y-2 text-xs">
                                                 @foreach($rolePermissions as $rolePermission)
-                                                @if($rolePermission->area == 'permissions')
+                                                @if($rolePermission->area == 'Permissions')
                                               <li class="flex items-center">
                                                 <div class="mr-2">
-                                                  <svg class="w-4 h-4 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
+                                                  <svg class="w-4 h-4 text-green-500" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
                                                     <polyline fill="none" stroke="currentColor" points="6,12 10,16 18,8"></polyline>
                                                     <circle cx="12" cy="12" fill="none" r="11" stroke="currentColor"></circle>
                                                   </svg>
@@ -122,10 +122,46 @@
                                             <p class="mb-1 font-bold tracking-wide text-xs">Features</p>
                                             <ul class="space-y-2 text-xs">
                                                 @foreach($rolePermissions as $rolePermission)
-                                                @if($rolePermission->area == 'activity')
+                                                @if($rolePermission->area == 'Activity')
                                               <li class="flex items-center">
                                                 <div class="mr-2">
-                                                  <svg class="w-4 h-4 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
+                                                  <svg class="w-4 h-4 text-green-500" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
+                                                    <polyline fill="none" stroke="currentColor" points="6,12 10,16 18,8"></polyline>
+                                                    <circle cx="12" cy="12" fill="none" r="11" stroke="currentColor"></circle>
+                                                  </svg>
+                                                </div>
+                                                <p class="font-medium text-gray-800">{{ $rolePermission->description}}</p>
+                                              </li>
+                                              @endif
+                                              @endforeach
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="flex flex-col justify-between p-5 bg-white border rounded shadow-sm">
+                                        <div class="mb-1">
+                                          <div class="flex items-center justify-between pb-3 mb-1 border-b">
+                                            <div>
+                                              <p class="text-xs font-bold tracking-wider uppercase">
+                                                Permissions
+                                              </p>
+                                              <p class="text-sm font-extrabold">TMO Reviews</p>
+                                            </div>
+                                            <div class="flex items-center justify-center w-24 h-24 rounded-full bg-blue-gray-50">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                  </svg>
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <p class="mb-1 font-bold tracking-wide text-xs">Features</p>
+                                            <ul class="space-y-2 text-xs">
+                                                @foreach($rolePermissions as $rolePermission)
+                                                @if($rolePermission->area == 'Reviews')
+                                              <li class="flex items-center">
+                                                <div class="mr-2">
+                                                  <svg class="w-4 h-4 text-green-500" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
                                                     <polyline fill="none" stroke="currentColor" points="6,12 10,16 18,8"></polyline>
                                                     <circle cx="12" cy="12" fill="none" r="11" stroke="currentColor"></circle>
                                                   </svg>
@@ -150,7 +186,7 @@
                                             </div>
                                             <div class="flex items-center justify-center w-24 h-24 rounded-full bg-blue-gray-50">
                                                   <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                                                   </svg>
                                             </div>
                                           </div>
@@ -158,10 +194,10 @@
                                             <p class="mb-1 font-bold tracking-wide text-xs">Features</p>
                                             <ul class="space-y-2 text-xs">
                                                 @foreach($rolePermissions as $rolePermission)
-                                                @if($rolePermission->area == 'reviews')
+                                                @if($rolePermission->area == 'Digital Review')
                                               <li class="flex items-center">
                                                 <div class="mr-2">
-                                                  <svg class="w-4 h-4 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
+                                                  <svg class="w-4 h-4 text-green-500" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
                                                     <polyline fill="none" stroke="currentColor" points="6,12 10,16 18,8"></polyline>
                                                     <circle cx="12" cy="12" fill="none" r="11" stroke="currentColor"></circle>
                                                   </svg>
@@ -194,10 +230,10 @@
                                             <p class="mb-1 font-bold tracking-wide text-xs">Features</p>
                                             <ul class="space-y-2 text-xs">
                                                 @foreach($rolePermissions as $rolePermission)
-                                                @if($rolePermission->area == 'clients')
+                                                @if($rolePermission->area == 'Clients')
                                               <li class="flex items-center">
                                                 <div class="mr-2">
-                                                  <svg class="w-4 h-4 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
+                                                  <svg class="w-4 h-4 text-green-500" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
                                                     <polyline fill="none" stroke="currentColor" points="6,12 10,16 18,8"></polyline>
                                                     <circle cx="12" cy="12" fill="none" r="11" stroke="currentColor"></circle>
                                                   </svg>
@@ -230,10 +266,82 @@
                                             <p class="mb-1 font-bold tracking-wide text-xs">Features</p>
                                             <ul class="space-y-2 text-xs">
                                                 @foreach($rolePermissions as $rolePermission)
-                                                @if($rolePermission->area == 'functions')
+                                                @if($rolePermission->area == 'Functions')
                                               <li class="flex items-center">
                                                 <div class="mr-2">
-                                                  <svg class="w-4 h-4 text-deep-purple-accent-400" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
+                                                  <svg class="w-4 h-4 text-green-500" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
+                                                    <polyline fill="none" stroke="currentColor" points="6,12 10,16 18,8"></polyline>
+                                                    <circle cx="12" cy="12" fill="none" r="11" stroke="currentColor"></circle>
+                                                  </svg>
+                                                </div>
+                                                <p class="font-medium text-gray-800">{{ $rolePermission->description}}</p>
+                                              </li>
+                                              @endif
+                                              @endforeach
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="flex flex-col justify-between p-5 bg-white border rounded shadow-sm">
+                                        <div class="mb-1">
+                                          <div class="flex items-center justify-between pb-3 mb-1 border-b">
+                                            <div>
+                                              <p class="text-xs font-bold tracking-wider uppercase">
+                                                Permissions
+                                              </p>
+                                              <p class="text-sm font-extrabold">Estates</p>
+                                            </div>
+                                            <div class="flex items-center justify-center w-24 h-24 rounded-full bg-blue-gray-50">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                                  </svg>
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <p class="mb-1 font-bold tracking-wide text-xs">Features</p>
+                                            <ul class="space-y-2 text-xs">
+                                                @foreach($rolePermissions as $rolePermission)
+                                                @if($rolePermission->area == 'Estates')
+                                              <li class="flex items-center">
+                                                <div class="mr-2">
+                                                  <svg class="w-4 h-4 text-green-500" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
+                                                    <polyline fill="none" stroke="currentColor" points="6,12 10,16 18,8"></polyline>
+                                                    <circle cx="12" cy="12" fill="none" r="11" stroke="currentColor"></circle>
+                                                  </svg>
+                                                </div>
+                                                <p class="font-medium text-gray-800">{{ $rolePermission->description}}</p>
+                                              </li>
+                                              @endif
+                                              @endforeach
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <div class="flex flex-col justify-between p-5 bg-white border rounded shadow-sm">
+                                        <div class="mb-1">
+                                          <div class="flex items-center justify-between pb-3 mb-1 border-b">
+                                            <div>
+                                              <p class="text-xs font-bold tracking-wider uppercase">
+                                                Permissions
+                                              </p>
+                                              <p class="text-sm font-extrabold">Members</p>
+                                            </div>
+                                            <div class="flex items-center justify-center w-24 h-24 rounded-full bg-blue-gray-50">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                                  </svg>
+                                            </div>
+                                          </div>
+                                          <div>
+                                            <p class="mb-1 font-bold tracking-wide text-xs">Features</p>
+                                            <ul class="space-y-2 text-xs">
+                                                @foreach($rolePermissions as $rolePermission)
+                                                @if($rolePermission->area == 'Members')
+                                              <li class="flex items-center">
+                                                <div class="mr-2">
+                                                  <svg class="w-4 h-4 text-green-500" viewBox="0 0 24 24" stroke-linecap="round" stroke-width="2">
                                                     <polyline fill="none" stroke="currentColor" points="6,12 10,16 18,8"></polyline>
                                                     <circle cx="12" cy="12" fill="none" r="11" stroke="currentColor"></circle>
                                                   </svg>

@@ -46,4 +46,9 @@ class Survey extends Model
     {
         return $this->belongsTo(clients::class, 'client_id', 'id');
     }
+
+    public function AnnualReviewLinks()
+    {
+        return $this->hasOne(clients::class);
+    }
 }

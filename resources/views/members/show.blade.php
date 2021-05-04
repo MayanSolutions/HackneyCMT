@@ -163,7 +163,10 @@
                                <div class="flex items-center">
                                   <div class="">
                                      <div class="text-sm font-medium text-gray-900">
-                                        {{ date('d-m-y', strtotime($formerMember->agm_date)) }}
+                                        {{ date('jS \o\f F, Y', strtotime($formerMember->agm_date)) }}
+                                     </div>
+                                     <div class="text-xs font-medium text-green-500">
+                                        {{ $formerMember->agm_date->diffForHumans() }}
                                      </div>
                                   </div>
                                </div>
@@ -172,7 +175,10 @@
                                <div class="flex items-center">
                                   <div class="">
                                      <div class="text-sm font-medium text-gray-900">
-                                        {{ date('d-m-y', strtotime($formerMember->position_exp_date)) }}
+                                        {{ date('jS \o\f F, Y', strtotime($formerMember->position_exp_date)) }}
+                                     </div>
+                                     <div class="text-xs font-medium text-green-500">
+                                        {{ $formerMember->position_exp_date->diffForHumans() }}
                                      </div>
                                   </div>
                                </div>
@@ -180,7 +186,11 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                <div class="flex items-center">
                                   <div class="">
-                                     <div class="text-sm font-medium text-gray-900">
+                                    <div class="text-sm font-medium text-gray-900">
+                                        {{ date('jS \o\f F, Y', strtotime($formerMember->deletion_date)) }}
+                                     </div>
+                                     <div class="text-xs font-medium text-green-500">
+                                        {{ $formerMember->deletion_date->diffForHumans(null, true) }} to go
                                      </div>
                                   </div>
                                </div>

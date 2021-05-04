@@ -50,7 +50,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="client_pfn" class="block font-medium text-sm text-gray-700">Office Contact No</label>
-                            <input type="text" name="client_pfn" id="client_pfn" value="{{ $clients->client_pfn }} " class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input type="text" name="client_pfn" id="client_pfn" value="{{ $clients->client_pfn }}" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('client_pfn')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror

@@ -52,6 +52,7 @@ class MembersController extends Controller
                 $members->elected_email = $elected_email[$i];
                 $members->elected_contact = $elected_contact[$i];
                 $members->position_exp_date = Carbon::parse($request->agm_date)->addDays(366);
+                $members->deletion_date = Carbon::parse($request->agm_date)->addDays(732);
                 $members->save();
                 }
 
@@ -92,6 +93,7 @@ class MembersController extends Controller
                 'elected_contact' => $request->elected_contact,
                 'elected_email' => $request->elected_email,
                 'position_exp_date' => $request->position_exp_date,
+                'deletion_date' => Carbon::parse($request->position_exp_date)->addDays(366),
                 ]);
 
             return redirect('/members/show/'.$member->client_id)->withSuccessMessage('Board member updated');

@@ -25,15 +25,15 @@
                 @endcan
                 @can('review_access')
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ url('/surveys.index') }}" :active="request()->routeIs('surveys.*')">
-                            Reviews
+                        <x-jet-nav-link href="{{ route('assessments.index') }}" :active="request()->routeIs('assessments.*')">
+                            Assessments
                         </x-jet-nav-link>
                     </div>
                 @endcan
 
                 @can('client_access')
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('clients.index') }}" :active="request()->routeIs('reviews.*')">
+                        <x-jet-nav-link href="{{ route('clients.index') }}" :active="request()->routeIs('clients.*')">
                             TMO Profiles
                         </x-jet-nav-link>
                     </div>
@@ -96,7 +96,7 @@
                         @endcan
 
                         @can('can_view_digi_reviews')
-                        <x-jet-dropdown-link href="{{ route('reviewslist.index') }}">
+                        <x-jet-dropdown-link href="{{ route('digitalreviews.index') }}">
                             {{ __('Digital Reviews') }}
                         </x-jet-dropdown-link>
                         @endcan

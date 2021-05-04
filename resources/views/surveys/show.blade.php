@@ -63,7 +63,7 @@
                             </h3>
                         </div>
 
-                    <form class="form-prevent-double-click" action="/surveys/{{ $review->id }}-{{ Str::slug($review->title) }}" method="post" >
+                    <form class="form-prevent-double-click" enctype="multipart/form-data" action="/surveys/{{ $review->id }}-{{ Str::slug($review->title) }}" method="post" >
                         @csrf
 
                         <div class="bg-white mt-6 mb-6 p-3 p-3 ml-5 mr-5 grid shadow overflow-hidden sm:rounded-md">
@@ -160,6 +160,21 @@
                                         @enderror
                                     </div>
 
+                                    </div>
+                                </div>
+                                <div class="bg-white mt-6 mb-6 p-3 p-3 ml-5 mr-5 grid w-90 gap-4 shadow overflow-hidden sm:rounded-md row-gap-5 mx-auto lg:grid-cols-3">
+                                    <div class="col-span-2 px-4 py-5 bg-white sm:p-6">
+                                        <h6 class="mb-3 text-l font-bold leading-5">Commentary</h6>
+                                        <textarea name="responses[{{ $key }}][commentary]" class="form-input rounded-md shadow-sm mt-1 block w-full">{{ old('response.' . $key . '.commentary') }}</textarea>
+                                    </div>
+                                    <div class="col-span-1 flex w-full mt-7 items-center justify-center bg-grey-lighter">
+                                        <label class="w-2/3 flex flex-col items-center px-2 py-3 bg-white text-blue rounded-lg shadow-lg tracking-wide border border-blue cursor-pointer hover:bg-white hover:text-gray-700">
+                                            <svg class="w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                                            </svg>
+                                            <span class="mt-2 text-base leading-normal">Upload Document</span>
+                                            <input type='file' name="file_name" class="hidden" />
+                                        </label>
                                     </div>
                                 </div>
                                 @endforeach

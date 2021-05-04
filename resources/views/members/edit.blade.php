@@ -43,13 +43,13 @@
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="position" class="block font-medium text-sm text-gray-700">Currently: {{ $members->position }}</label>
                             <select name="position" id="position" class="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none focus:shadow-outline" placeholder="Regular input">
-                                <option value="Board Member">Board Member</option>
-                                <option value="Board Secretary">Board Secretary</option>
-                                <option value="Vice Chair">Vice Chair</option>
-                                <option value="Board Chair">Board Chair</option>
-                                <option value="Co-opted Member">Co-opted Member</option>
-                                <option value="Councillor">Councillor</option>
-                                <option value="Commitee Member">Commitee Member</option>
+                                <option value="Board Member" {{ ($members->position == '') ? 'selected' : '' }}>Board Member</option>
+                                <option value="Board Secretary" {{ ($members->position == '') ? 'selected' : '' }}>Board Secretary</option>
+                                <option value="Vice Chair" {{ ($members->position == '') ? 'selected' : '' }}>Vice Chair</option>
+                                <option value="Board Chair" {{ ($members->position == '') ? 'selected' : '' }}>Board Chair</option>
+                                <option value="Co-opted Member" {{ ($members->position == '') ? 'selected' : '' }}>Co-opted Member</option>
+                                <option value="Councillor" {{ ($members->position == '') ? 'selected' : '' }}>Councillor</option>
+                                <option value="Commitee Member" {{ ($members->position == '') ? 'selected' : '' }}>Commitee Member</option>
                                 <option value="{{ $members->position }}" selected="selected">{{ $members->position }}</option>
                             </select>
                             @error('position')

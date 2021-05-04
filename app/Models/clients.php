@@ -85,4 +85,9 @@ class clients extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function AnnualReviewLinks()
+    {
+        return $this->hasMany(AnnualReviewLink::class);
+    }
+
 }

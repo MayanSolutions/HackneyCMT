@@ -15,7 +15,7 @@ class Role extends Model
         'title'
     ];
 
-    protected static $recordEvents = ['created', 'deleted'];
+    protected static $recordEvents = ['created', 'updated', 'deleted'];
 
     protected static $logName = 'Roles and Permissions';
 

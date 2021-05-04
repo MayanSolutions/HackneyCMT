@@ -145,8 +145,9 @@
                   <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <h2 class="mb-2 mt-4 ml-6 font-extrabold float-left tracking-tight text-gray-700">
-                           Assigned Clients
+                           Assigned TMO's
                         </h2>
+                        @if(count($clientDetails) > 0)
                      <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                            <tr>
@@ -229,6 +230,20 @@
                            <!-- More items... -->
                         </tbody>
                      </table>
+                     @else
+                     <section class="w-full bg-gradient-to-b from-gray-100 to-white">
+                        <div class="w-full px-4 py-10 mx-auto text-left md:text-center md:w-3/4 lg:w-2/4">
+                          <h2 class="mb-6 font-extrabold tracking-tight md:text-1xl md:mb-6 md:leading-tight">
+                              This officer has not been assigned any TMO organisations to oversee
+                            </h2>
+                          <div class="mb-0 space-x-0 md:space-x-2">
+                            <p class="mt-1 max-w-2xl text-xs text-gray-600 text-white">
+                                Some roles do not require officers to oversee clients.
+                            </p>
+                          </div>
+                        </div>
+                      </section>
+                      @endif
                      </div>
                   </div>
                </div>
