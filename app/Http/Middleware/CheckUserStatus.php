@@ -19,8 +19,8 @@ class CheckUserStatus
         if (auth()->user()->active == true ) {
         return $next($request);
         }
-
         $request->session()->flush();
         return abort('403');
+        
     }
 }

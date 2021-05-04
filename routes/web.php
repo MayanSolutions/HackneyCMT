@@ -29,8 +29,9 @@ Route::group(['middleware' => ['auth', 'checkuserstatus']], function () {
     Route::post('/members/{clients}', [\App\Http\Controllers\MembersController::class, 'store'])->name('members.custom.store');
     Route::get('/members/show/{id}', [\App\Http\Controllers\MembersController::class, 'show']);
     Route::resource('members', \App\Http\Controllers\MembersController::class);
-    Route::resource('', \App\Http\Controllers\AnnualReviewLinkController::class);
+    Route::resource('TEST', \App\Http\Controllers\AnnualReviewLinkController::class);
     Route::resource('assignments', \App\Http\Controllers\AnnualReviewLinkController::class);
+    Route::resource('assessments', \App\Http\Controllers\SurveyReviewController::class);
 
     // digital review controllers
     Route::get('/reviews/create', [\App\Http\Controllers\ReviewController::class, 'create']);
@@ -46,8 +47,6 @@ Route::group(['middleware' => ['auth', 'checkuserstatus']], function () {
     Route::get('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'show']);
     Route::post('/surveys/{review}-{slug}', [\App\Http\Controllers\SurveyController::class, 'store']);
 
-    //Assessment controllers
-    Route::resource('assessments', \App\Http\Controllers\SurveyReviewController::class);
 });
 
 
